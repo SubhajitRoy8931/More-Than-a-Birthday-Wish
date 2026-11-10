@@ -36,15 +36,11 @@
   }
   document.querySelectorAll('.return-link').forEach(link => {
     link.addEventListener('click', event => {
-      if (!window.opener || window.opener.closed) return;
-      const target = new URL(link.href, window.location.href);
-      const serialized = target.searchParams.get('storyReturn') || returnState;
-      if (!serialized) return;
+      if (!window.opener || window.opener.closed || !returnState) return;
       try {
         if (window.opener.location.origin !== window.location.origin) return;
-        const state = JSON.parse(serialized);
         window.opener.focus();
-        window.opener.postMessage({ type: 'birthday-story:return-to-opener', state }, window.location.origin);
+        window.opener.postMessage({ type: 'birthday-story:return-to-opener' }, window.location.origin);
         event.preventDefault();
         window.close();
       } catch (error) {
