@@ -1,5 +1,26 @@
 (() => {
   'use strict';
+
+  const status = document.getElementById('poemLoadStatus');
+  function showStatus(message, role = 'alert') {
+    if (!status) return;
+    status.textContent = message;
+    status.hidden = false;
+    status.setAttribute('role', role);
+  }
+  function clearStatus() {
+    if (!status) return;
+    status.hidden = true;
+    status.textContent = '';
+  }
+
+  // Make runtime failures visible instead of leaving a blank poem page.
+  window.addEventListener('error', event => {
+    if (event.target && event.target !== window) return;
+    console.error('Poem page script error:', event.error || event.message);
+    showStatus('The poems could not be displayed because the page encountered an error. Reload the page; if it continues, check the browser console.');
+  });
+
   // Carry the story timestamp through collection and dedicated-poem pages.
   // This runs before the collection mount check so the same script can also
   // maintain return links on let-you-know.html.
@@ -52,7 +73,9 @@
   }
 
   function appendStanzas(container, stanzas) {
-    (stanzas || []).forEach(stanzaText => {
+    if (!Array.isArray(stanzas)) throw new Error('Poem stanzas are missing or invalid.');
+    stanzas.forEach(stanzaText => {
+      if (typeof stanzaText !== 'string') throw new Error('A poem stanza is not valid text.');
       const stanza = make('section', 'stanza');
       stanzaText.split('\n').forEach(line => stanza.appendChild(make('p', '', line)));
       container.appendChild(stanza);
@@ -62,59 +85,93 @@
   // Dedicated poem pages render from the same collection data as the accordion,
   // so the full text can never drift between its two appearances.
   const dedicatedPoemMount = document.querySelector('[data-poem-id]');
-  if (collection && dedicatedPoemMount) {
-    const dedicatedPoem = Object.values(collection).flat().find(poem => poem.id === dedicatedPoemMount.dataset.poemId);
-    if (dedicatedPoem) appendStanzas(dedicatedPoemMount, dedicatedPoem.stanzas);
+  if (dedicatedPoemMount) {
+    if (!collection || typeof collection !== 'object') {
+      showStatus('The poem data could not be loaded. Reload this page; if the problem continues, the site deployment may be incomplete.');
+      return;
+    }
+
+    try {
+      const allPoems = Object.values(collection).filter(Array.isArray).flat();
+      const dedicatedPoem = allPoems.find(poem => poem && poem.id === dedicatedPoemMount.dataset.poemId);
+      if (!dedicatedPoem) {
+        showStatus('This poem could not be found in the collection. Please return to the Poems page.');
+        return;
+      }
+      appendStanzas(dedicatedPoemMount, dedicatedPoem.stanzas);
+      clearStatus();
+    } catch (error) {
+      console.error('Could not render the dedicated poem:', error);
+      showStatus('The poem data was found, but its text could not be displayed. Please reload the page.');
+    }
   }
-  if (!collection || !mount) return;
+
+  if (!mount) return;
+  if (!collection || typeof collection !== 'object') {
+    showStatus('The poem data file could not be loaded. Reload the page; if the problem continues, check the site deployment and the poems-data.js request.');
+    return;
+  }
 
   const sections = [
     { key: 'before', id: 'before-separation', title: 'Before the Separation', count: '09', note: 'The words written while our story was still being lived.' },
     { key: 'after', id: 'after-separation', title: 'After the Separation', count: '14', note: 'The words that came after, carrying memories and unanswered questions.' }
   ];
 
-  sections.forEach(sectionInfo => {
-    const poems = collection[sectionInfo.key] || [];
-    const section = make('section', 'poem-collection-section');
-    section.id = sectionInfo.id;
-    const heading = make('header', 'collection-section-heading');
-    const overline = make('div', 'section-overline', sectionInfo.count + ' POEMS');
-    const title = make('h2', '', sectionInfo.title);
-    const note = make('p', 'section-note', sectionInfo.note);
-    heading.append(overline, title, note);
-    const list = make('div', 'poem-entry-list');
+  try {
+    sections.forEach(sectionInfo => {
+      const poems = collection[sectionInfo.key];
+      if (!Array.isArray(poems)) throw new Error('The ' + sectionInfo.key + ' poem collection is missing or invalid.');
 
-    poems.forEach((poem, index) => {
-      const details = make('details', 'poem-entry');
-      details.id = 'poem-' + sectionInfo.key + '-' + (index + 1);
-      const summary = make('summary', 'poem-entry-summary');
-      const main = make('span', 'poem-entry-main');
-      const poemTitle = make('span', 'poem-entry-title', poem.title);
-      const occasion = make('span', 'poem-entry-occasion', poem.occasion);
-      main.append(poemTitle, occasion);
-      const affordance = make('span', 'poem-entry-affordance', 'Read poem');
-      affordance.setAttribute('aria-hidden', 'true');
-      summary.append(main, affordance);
+      const section = make('section', 'poem-collection-section');
+      section.id = sectionInfo.id;
+      const heading = make('header', 'collection-section-heading');
+      const overline = make('div', 'section-overline', sectionInfo.count + ' POEMS');
+      const title = make('h2', '', sectionInfo.title);
+      const note = make('p', 'section-note', sectionInfo.note);
+      heading.append(overline, title, note);
+      const list = make('div', 'poem-entry-list');
 
-      const body = make('article', 'poem-entry-body');
-      body.setAttribute('aria-label', poem.title);
-      const text = make('div', 'full-poem collection-full-poem');
-      appendStanzas(text, poem.stanzas);
-      body.appendChild(text);
-      if (poem.dedicatedPage) {
-        const dedicated = make('a', 'dedicated-poem-link', 'Open the dedicated poem page ↗');
-        const dedicatedUrl = new URL(poem.dedicatedPage, window.location.href);
-        if (storyReturnState) dedicatedUrl.searchParams.set('storyReturn', storyReturnState);
-        dedicated.href = dedicatedUrl.href;
-        body.appendChild(dedicated);
-      }
-      details.append(summary, body);
-      details.addEventListener('toggle', () => {
-        affordance.textContent = details.open ? 'Close poem' : 'Read poem';
+      poems.forEach((poem, index) => {
+        if (!poem || typeof poem.title !== 'string' || !Array.isArray(poem.stanzas)) {
+          throw new Error('A poem entry in ' + sectionInfo.key + ' is incomplete.');
+        }
+        const details = make('details', 'poem-entry');
+        details.id = 'poem-' + sectionInfo.key + '-' + (index + 1);
+        const summary = make('summary', 'poem-entry-summary');
+        const main = make('span', 'poem-entry-main');
+        const poemTitle = make('span', 'poem-entry-title', poem.title);
+        const occasion = make('span', 'poem-entry-occasion', poem.occasion || '');
+        main.append(poemTitle, occasion);
+        const affordance = make('span', 'poem-entry-affordance', 'Read poem');
+        affordance.setAttribute('aria-hidden', 'true');
+        summary.append(main, affordance);
+
+        const body = make('article', 'poem-entry-body');
+        body.setAttribute('aria-label', poem.title);
+        const text = make('div', 'full-poem collection-full-poem');
+        appendStanzas(text, poem.stanzas);
+        body.appendChild(text);
+        if (poem.dedicatedPage) {
+          const dedicated = make('a', 'dedicated-poem-link', 'Open the dedicated poem page ↗');
+          const dedicatedUrl = new URL(poem.dedicatedPage, window.location.href);
+          if (storyReturnState) dedicatedUrl.searchParams.set('storyReturn', storyReturnState);
+          dedicated.href = dedicatedUrl.href;
+          body.appendChild(dedicated);
+        }
+        details.append(summary, body);
+        details.addEventListener('toggle', () => {
+          affordance.textContent = details.open ? 'Close poem' : 'Read poem';
+        });
+        list.appendChild(details);
       });
-      list.appendChild(details);
+      section.append(heading, list);
+      mount.appendChild(section);
     });
-    section.append(heading, list);
-    mount.appendChild(section);
-  });
+
+    clearStatus();
+  } catch (error) {
+    console.error('Could not render the poem collection:', error);
+    mount.replaceChildren();
+    showStatus('The poem collection data is incomplete or could not be rendered. Reload the page; if the problem continues, check the browser console.');
+  }
 })();
