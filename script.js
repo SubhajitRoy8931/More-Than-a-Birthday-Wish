@@ -3896,8 +3896,9 @@
     }).filter(Boolean);
   }
 
-  // Carry a complete, versioned snapshot to either companion page. The URL
-  // supports a new page/tab; sessionStorage remains a fallback for local previews.
+  // Store the full snapshot in sessionStorage. The URL carries only a short
+  // marker: serializing every animation into a query string can create URLs
+  // large enough to be rejected by browsers, proxies, or the hosting layer.
   function createStoryReturnState() {
     const clickTime = !paused && !ended && lastFrameTime
       ? Math.max(0, performance.now() - lastFrameTime)
@@ -3927,16 +3928,15 @@
 
   function withStoryReturnState(destination) {
     const state = createStoryReturnState();
-    const serializedState = JSON.stringify(state);
     lastNavigationReturnState = state;
     try {
-      sessionStorage.setItem(STORY_RETURN_STATE_KEY, serializedState);
+      sessionStorage.setItem(STORY_RETURN_STATE_KEY, JSON.stringify(state));
       sessionStorage.removeItem(LEGACY_STORY_RETURN_STATE_KEY);
     } catch (error) {
-      console.info('Session storage unavailable; using the return URL.', error);
+      console.warn('Could not save the story return snapshot in this tab.', error);
     }
     const target = new URL(destination, window.location.href);
-    target.searchParams.set('storyReturn', serializedState);
+    target.searchParams.set('storyReturn', 'session-v2');
     return target.href;
   }
 
@@ -4212,7 +4212,12 @@
 
   function restoreStoryPositionAfterPoems() {
     let savedState;
-    let serializedState = new URLSearchParams(window.location.search).get('storyReturn');
+    const returnMarker = new URLSearchParams(window.location.search).get('storyReturn');
+    // New links use a small marker and read the snapshot from this tab's
+    // sessionStorage. Full JSON query values remain supported for old bookmarks.
+    let serializedState = returnMarker && returnMarker.trim().startsWith('{')
+      ? returnMarker
+      : null;
     try {
       if (!serializedState) {
         serializedState = sessionStorage.getItem(STORY_RETURN_STATE_KEY)
@@ -4221,7 +4226,7 @@
       sessionStorage.removeItem(STORY_RETURN_STATE_KEY);
       sessionStorage.removeItem(LEGACY_STORY_RETURN_STATE_KEY);
     } catch (error) {
-      // URL state remains available even where sessionStorage is restricted.
+      // Legacy full-state URLs still work when sessionStorage is restricted.
       console.info('Session storage unavailable while restoring the story position.', error);
     }
     if (!serializedState) return false;
@@ -4233,9 +4238,9 @@
     }
     if (!restoreStoryState(savedState)) return false;
 
-    // Remove the one-time URL payload after reading it so a later manual
-    // refresh does not repeatedly rewind the restored story position.
-    if (window.location.search.includes('storyReturn=')) {
+    // Remove the one-time marker/payload after reading it so a later refresh
+    // does not repeatedly rewind the story position.
+    if (returnMarker) {
       try {
         window.history.replaceState(null, '', window.location.pathname + window.location.hash);
       } catch (_) { /* Some file:// previews disallow history URL replacement. */ }
@@ -4282,13 +4287,28 @@
     lastFrameTime = 0;
   }
 
-  // A companion poem tab can restore the still-open original story tab without
-  // creating a second copy. Only accept a same-origin, versioned state message.
+  // A companion poem tab asks the still-open story tab to restore its own
+  // snapshot. The large animation state never needs to travel through a URL or
+  // postMessage; it remains in this tab's memory/sessionStorage.
   window.addEventListener('message', event => {
     if (event.origin !== window.location.origin || !event.data
       || event.data.type !== 'birthday-story:return-to-opener') return;
-    if (restoreStoryState(event.data.state, { sameDocument: true })) {
+    let savedState = event.data.state || lastNavigationReturnState;
+    if (!savedState) {
+      try {
+        const serialized = sessionStorage.getItem(STORY_RETURN_STATE_KEY)
+          || sessionStorage.getItem(LEGACY_STORY_RETURN_STATE_KEY);
+        if (serialized) savedState = JSON.parse(serialized);
+      } catch (error) {
+        console.info('The story tab could not read its saved return snapshot.', error);
+      }
+    }
+    if (restoreStoryState(savedState, { sameDocument: true })) {
       lastNavigationReturnState = null;
+      try {
+        sessionStorage.removeItem(STORY_RETURN_STATE_KEY);
+        sessionStorage.removeItem(LEGACY_STORY_RETURN_STATE_KEY);
+      } catch (_) { /* The in-memory restore has already succeeded. */ }
       window.focus();
       startAnimationLoop();
       if (!paused) acquireScreenWakeLock();
