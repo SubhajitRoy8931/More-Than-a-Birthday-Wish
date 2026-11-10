@@ -283,5 +283,34 @@ window.POEM_COLLECTION = {
         "Aaj bhi jawaab nahi hai bas yaadon ka silsila hai,\nTu meri kahaani ka sach thi ya sirf mera bharam tha?"
       ]
     }
+    {
+      "id": "aakhri-phool",
+      "title": "Aakhri Phool",
+      "occasion": "My Last Birthday Wish · 11 November 2026",
+      "stanzas": [
+        "Tere liye jo aag jalayi thi, aaj usi ki raakh se apna anjaam likh raha hoon,\nJis mohabbat ko umr bhar jeena tha, aaj usi ka aakhri paigaam likh raha hoon.",
+        "Ek tuition ki mulaqat se baaton ka silsila chal pada,\nGyarah ko tere janamdin par pehla paigaam bheja, dil ko raasta mil gaya.\nChaubees ko dil ka haal kaha, pachchees ko tera iqraar mila,\nEk anjaan se chehre mein phir jeene ka ek khwaab mila.",
+        "Shehron ke faasle the, mulaqatein kam, par intezaar beshumaar raha,\nKabhi chand message mein din guzra, kabhi khamosh video call mein izhaar raha.\nPaanch saal jis mulaqat ko khwaabon mein sanjoya tha,\n23 January ko Tufanganj mein woh pehla khwaab haqeeqat hua.",
+        "Phir Holi ke rangon mein ek ankahee shikayat ghul gayi,\nMeri ek bhool tere dil mein khamosh si doori ban gayi.\nMain maafi ki dehleez par umeed liye khada reh gaya,\nNau March ko paanch saal ka saath alag raaston pe chal diya.",
+        "Main judaai ko hi kahaani ka aakhri panna samajhta raha,\nApne hisse ka maatam khamoshi mein odhta raha.\nPhir pehli June ko jaana, pandrah din baad tera naya rishta ban gaya,\nJis pal ko main anjaam samjha, tere liye woh naya aaghaz ban gaya.",
+        "Main abhi alvida ke har harf ka matlab samajh raha tha,\nUdhar tere kal ka pehla panna kisi aur ke naam khul raha tha.\nCalendar ne pandrah din gine, maine ek umr ka janaaza dekha,\nTere faisle pe haq na tha, par maine khudko bikharna toh dekha.",
+        "Paanch saal jis Tufanganj ki shaam ko khwaab bana kar rakha,\nTune wohi shaam kisi aur ke saath ek hafte mein jee li.\nJis awaaz ke liye main lamhon ki mohlat maangta raha,\nWoh ab kisi aur ke roz mein shaamil huwa.",
+        "Jo mere saath mushkil tha, tere aaj mein aasaan ho gaya,\nMain teri tabdeeli se nahi, apne intezaar se hairaan ho gaya.\nMaine jise umr bhar ki mohabbat samjha, tune use kashish kaha,\nEk hi kahaani thi, maine umr likhi, tune guzra hua waqt kaha.",
+        "Socha tha tere saath chehron ke parde uthaunga,\nKya khabar thi tere aaine mein apna bharam paaunga.\nDuniya se pehle meri nazron ka aitbaar toot gaya,\nJis aks ko sach maana tha, usi mein mera khwaab chhoot gaya.",
+        "Har behas ke baad khamoshi ko sulah samajhta raha,\nTeri baat sambhaalne ko apni awaaz dabaata raha.\nTere ishare the, ya meri aankhon pe yaqeen ka parda tha,\nMain ghar bachaata raha, deewaron mein daraar badhti rahi.",
+        "Tu kehti thi meri umeedein tere kandhon pe bojh ban gayi,\nMeri kuch khwahishein tere liye zanjeer ban gayi.\nMain chahta tha tu kaamyaab ho, meri koi shart nahi thi,\nTeri manzil par meri mohabbat ka koi qarz nahi tha.",
+        "Haan, jism ki khwahish thi, isme kya gunaah kamaya?\nPar teri 'na' ke aage maine kab apna haq jataya?\nSaala, jism hi manzil hota toh paanch saal wafadaar kyun rehta?\nPhir ek khwahish ke naam pe mera wafaa ko kyun bhulaaya?",
+        "Jis saanp ne dasa, main usi se ilaaz poochta raha,\nZehar andar utarta raha, main usi se sabab poochta raha.\nMarham mere hi paas tha, main nishaanon ka hisaab karta raha,\nKhud ko bachana tha, main tujhse insaaf maangta raha.",
+        "Ab har sawaal ka jawaab tere dar se nahi maangunga,\nHar raat apne zakhmon ko tere naam se nahi jagaaunga.\nMain tujhe maaf karta hoon, magar dard ko jhooth nahi kahunga,\nJo sach mein toota tha, use salamat dikhane ki kasam nahi khaunga.",
+        "Ab meri taraf se tere dar pe koi dastak nahi hogi,\nTeri yaad toh aayegi, magar tujhe pukaar nahi hogi.\nTujhe bhoolne ka jhootha daawa bhi nahi karunga,\nPar tere intezaar mein ab ek aur umr nahi guzarunga.",
+        "Kabhi dhalti hui roshni ghar lautne ka ehsaas thi,\nAur ab wohi roshni raat ke aane ka dard hai.\nKuch shaamein umr bhar yaadon mein roshan reh jaati hain,\nUnhe yaad rakhna khoobsurat to hota hai par unmein theharna saza ban jaata hai.",
+        "Bees se jo khwaab dekhe the, chhabbees mein unhe dafan kar raha hoon,\nJis kal mein tera naam likha tha, us kal ko aaj azaad kar raha hoon.\nAaj aakhri phool laaya hoon, har pankhudi mein ek dard liye,\nTere liye nahi, humari qabr ke liye, humare beete kal ke liye.",
+        "Jin khwaabon ko tune aankhon mein chupke se paala hai,\nDua hai har ek khwaab ko apna aasmaan mile.\nTeri mehnat ka har qatra ek din rang le aaye,\nTu jis manzil ko chhoo le, woh tere naam ho jaaye.",
+        "Tere ghar ki dehleez pe sukoon yun thahar jaaye,\nJaise thaki hui shaam ko aakhir apna ghar mil jaaye.\nTeri aankhon ki roshni pe koi mausam bhaari na ho,\nTeri hansi ko khilne ke liye koi wajah zaroori na ho.",
+        "Main apni gardish tere aasmaan se hata raha hoon,\nNa paigaam ban ke lautunga, na kisi mod pe milunga.\nTu bekhauf apna kal chun, mere lautne ka darr na ho,\nMeri umeedon se teri rihaai hai, ab tujh par mera koi qarz baaqi na ho.",
+        "Jis gyarah ko tere janamdin pe pehla paigaam bheja tha,\nChhe saal baad usi gyarah ko apni taraf se aakhri salaam bhej raha hoon.\nTu meri yaadon mein rahegi, magar mere intezaar mein nahi,\nTera janamdin har saal aaye, mera naam uske saath aaye ye zaroori toh nahi."
+      ],
+      "dedicatedPage": "aakhri-phool.html"
+    }
   ]
 };
