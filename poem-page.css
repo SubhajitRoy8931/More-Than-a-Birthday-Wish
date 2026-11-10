@@ -110,3 +110,18 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .return-link { transition: none; }
 }
+
+
+/* Visible feedback for missing or failed poem data/scripts. */
+.poem-load-status {
+  width: min(690px, 100%);
+  margin: 24px auto;
+  padding: 14px 16px;
+  border: 1px solid rgba(198,166,207,.28);
+  border-radius: 10px;
+  color: var(--muted);
+  background: rgba(72,52,81,.18);
+  font: 400 13px/1.6 Inter, ui-sans-serif, system-ui, sans-serif;
+  text-align: center;
+}
+.poem-load-status[hidden] { display: none; }
