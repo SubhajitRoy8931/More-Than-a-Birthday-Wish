@@ -4110,12 +4110,12 @@ button { font: inherit; }
     later lines wrap only through the clear column beside the grave. The shape
     continues to the ground-safe bottom of the viewport: narration never flows
     below the headstone or onto the ground, and instead scrolls upward within
-    this bounded area. The sticky float stays aligned during that scrolling.
+    this bounded area. JS advances the float's document-space top by scrollTop
+    so the wrap boundary remains aligned with the stationary artwork.
   */
   #scene-52 .scene52__grave-flow-shape {
     float: right;
-    position: sticky;
-    top: 0;
+    position: static;
     width: 40%;
     height: 1000px; /* JS sets the measured grave bounds once per viewport size. */
     margin: 0 0 0 8px;
@@ -4219,8 +4219,7 @@ button { font: inherit; }
 
   #scene-52 .scene52__grave-flow-shape {
     float: right;
-    position: sticky;
-    top: 0;
+    position: static;
     width: 40%;
     height: 1000px;
     margin-left: 8px;
