@@ -1,0 +1,1352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17121E">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="An interactive journey through personal memories, unexpected chapters and heartfelt moments. More than a birthday wish, it's a collection of moments and feelings I wanted you to experience.">
+  <title>More Than a Birthday Wish | A Story for You</title>
+
+  <!-- Social sharing metadata (intentionally no preview image) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="More Than a Birthday Wish">
+  <meta property="og:description" content="An interactive journey through personal memories, unexpected chapters and heartfelt moments. More than a birthday wish, it's a collection of moments and feelings I wanted you to experience.">
+  <meta property="og:locale" content="en_IN">
+
+  <link rel="preload" as="image" href="assets/sandhya-display-picture.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="experience" class="experience is-paused" aria-label="An interactive memory">
+    <div class="atmosphere" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- One persistent soundtrack instance for the entire story experience. -->
+    <audio id="backgroundMusic" preload="auto" loop hidden aria-hidden="true" tabindex="-1">
+      <source src="assets/birthday-story-instrumental-seamless.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Pre-story invitation; intentionally separate from the 51-scene timeline. -->
+    <section class="opening-gate" id="openingGate" aria-label="Website introduction">
+      <div class="opening-gate-content">
+        <p class="opening-kicker" id="openingKicker">MY LAST GIFT FOR YOU</p>
+        <h1 class="opening-headline" id="openingHeadline" aria-hidden="true">A Little Glimpse Into What Once Was</h1>
+        <button class="opening-begin-button" id="enterStoryButton" type="button" hidden>Click to begin</button>
+      </div>
+    </section>
+
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Mute music" aria-pressed="false" title="Mute music">
+      <svg class="music-icon music-icon-on" id="musicIconOn" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 9v6h4l5 4V5L8 9H4Z" />
+        <path d="M16 9a5 5 0 0 1 0 6M18.5 6.5a8.5 8.5 0 0 1 0 11" />
+      </svg>
+      <svg class="music-icon music-icon-muted" id="musicIconMuted" viewBox="0 0 24 24" aria-hidden="true" hidden>
+        <path d="M4 9v6h4l5 4V5L8 9H4Z" />
+        <path d="m17 9 5 6m0-6-5 6" />
+      </svg>
+    </button>
+
+    <h1 class="scene-title-overlay" id="sceneTitle" aria-live="polite" aria-atomic="true" hidden></h1>
+
+    <section class="scene scene-poem is-active" data-scene="0" aria-label="Opening poem">
+      <div class="poem-stage">
+        <div class="poem-ornament" aria-hidden="true"><span></span><i></i><span></span></div>
+        <h1 id="poem" class="poem"> </h1>
+      </div>
+    </section>
+
+<section class="scene scene-date" data-scene="1" aria-label="November 11, 2020">
+      <div class="date-stage">
+        <div class="date-kicker">THE DAY OF THE FIRST MESSAGE</div>
+        <div class="date-line" aria-hidden="true"></div>
+        <h2 class="date-main">November 11</h2>
+        <div class="date-year">2020</div>
+        <div class="date-line date-line-bottom" aria-hidden="true"></div>
+      </div>
+    </section>
+
+<section class="scene scene-chat" data-scene="2" aria-label="The first WhatsApp exchange">
+      <div class="phone-aura" aria-hidden="true"></div>
+      <div class="phone-shell" role="group" aria-label="A visual recreation of the first WhatsApp conversation">
+        <div class="phone-side side-left" aria-hidden="true"></div>
+        <div class="phone-side side-right" aria-hidden="true"></div>
+        <div class="phone-screen">
+          <div class="status-bar" aria-hidden="true">
+            <span class="status-time"> </span>
+            <span class="dynamic-island"></span>
+            <span class="status-icons">
+              <svg viewBox="0 0 19 14"><path d="M1 5.2C5.8 1 13.2 1 18 5.2M4 8.2c3.2-2.8 7.8-2.8 11 0M7.2 11.1c1.5-1.3 3.1-1.3 4.6 0"/></svg>
+              <svg viewBox="0 0 18 14"><path d="M1 4.2 9 1l8 3.2v8.3H1z"/><path d="M3.5 10h11"/></svg>
+              <svg viewBox="0 0 22 13"><rect x="1" y="1" width="17" height="11" rx="2"/><path d="M20 4.3v4.4"/><rect class="battery-level" x="3" y="3" width="12" height="7" rx="1"/></svg>
+            </span>
+          </div>
+          <header class="chat-header">
+            <div class="back-chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m15 4-8 8 8 8"/></svg>
+            </div>
+            <img class="avatar" src="assets/sandhya-display-picture.jpg" alt="Sandhya's display picture from that time">
+            <div class="contact-details">
+              <div class="contact-name">SANDHYA</div>
+            </div>
+            <div class="chat-actions" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4.5 3.8h3.1l1.7 4.1-2 1.7a15 15 0 0 0 7.1 7.1l1.7-2 4.1 1.7v3.1a1.8 1.8 0 0 1-1.9 1.8C9 21 3 15 2.7 5.7a1.8 1.8 0 0 1 1.8-1.9Z"/></svg>
+              <svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></svg>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+            </div>
+          </header>
+
+          <div class="chat-body">
+            <div class="chat-wallpaper" aria-hidden="true"></div>
+            <div class="chat-flow">
+              <div class="message-row outgoing" id="message-gif">
+                <div class="bubble bubble-gif">
+                  <div class="birthday-frame">
+                    <img id="birthdayFrame" src="assets/birthday-frames/frame-00.webp" alt="Birthday cake with candles and the words HAPPY BIRTHDAY">
+                  </div>
+                </div>
+              </div>
+              <div class="message-row incoming" id="message-thanks">
+                <div class="bubble bubble-text">Thank you</div>
+              </div>
+              <div class="message-row outgoing" id="message-welcome">
+                <div class="bubble bubble-text">Welcome</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-composer" aria-hidden="true">
+            <span class="composer-plus">＋</span>
+            <div class="composer-input"><span>Message</span><span class="composer-smile">☺</span></div>
+            <svg class="composer-camera" viewBox="0 0 24 24"><path d="M4 7h3l1.4-2h7.2L17 7h3v12H4z"/><circle cx="12" cy="13" r="3.2"/></svg>
+            <svg class="composer-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3m-3 0h6"/></svg>
+          </div>
+          <div class="home-indicator" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-closing" data-scene="3" aria-label="And this is how everything started">
+      <div class="closing-stage">
+        <div class="closing-rule" aria-hidden="true"></div>
+        <h2>And this is how everything started.</h2>
+        <div class="closing-rule closing-rule-bottom" aria-hidden="true"></div>
+      </div>
+    </section>
+
+<section class="scene scene-days-intro" data-scene="4" aria-label="Days Without a Label, November 11–24, 2020">
+      <div class="days-intro-stage">
+        <div class="chapter-overline">NOVEMBER 11 — 24, 2020</div>
+        <h2 class="days-title">Days Without a Label</h2>
+        <div class="interval-track" aria-hidden="true">
+          <span class="interval-date interval-start">NOV 11</span>
+          <span class="interval-line"><i></i></span>
+          <span class="interval-date interval-end">NOV 24</span>
+        </div>
+        <div class="days-intro-copy">
+          <p>After that first birthday wish, the conversations didn't end.</p>
+          <p>One message slowly led to another. We talked regularly, sharing little things about our days and getting to know each other a little more with every conversation.</p>
+          <p>Without either of us noticing exactly when, talking to each other became a habit.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-phones" data-scene="5" aria-label="The phones we borrowed to stay in touch">
+      <div class="phones-stage">
+        <h2 class="phones-title">We found a way to talk.</h2>
+        <div class="borrowed-layout">
+          <div class="borrowed-phone borrowed-her">
+            <div class="mini-handset" aria-hidden="true">
+              <span class="mini-speaker"></span><span class="mini-screen"></span><span class="mini-home"></span>
+            </div>
+            <span class="borrowed-label">YOUR FATHER'S PHONE</span>
+          </div>
+          <div class="borrowed-phone borrowed-mine">
+            <div class="mini-handset mini-handset-mine" aria-hidden="true">
+              <span class="mini-speaker"></span><span class="mini-screen"></span><span class="mini-home"></span>
+            </div>
+            <span class="borrowed-label">BAROMA'S PHONE</span>
+          </div>
+          <div class="whatsapp-flight whatsapp-outbound" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="img" aria-label="WhatsApp"><circle cx="24" cy="24" r="22" fill="#20b96b"/><g transform="translate(2.4 2.4) scale(1.8)"><path d="M20.52 3.48A11.96 11.96 0 0 0 2.05 17.86L.5 23.5l5.79-1.52a12 12 0 1 0 14.23-18.5Z" fill="none" stroke="#fff" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.768.966-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.496.099-.198.05-.372-.025-.521-.074-.149-.669-1.611-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.478 0 1.463 1.064 2.875 1.213 3.074.149.198 2.095 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.414.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347Z" fill="#fff"/></g></svg>
+          </div>
+          <div class="whatsapp-flight whatsapp-return" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="img" aria-label="WhatsApp"><circle cx="24" cy="24" r="22" fill="#20b96b"/><g transform="translate(2.4 2.4) scale(1.8)"><path d="M20.52 3.48A11.96 11.96 0 0 0 2.05 17.86L.5 23.5l5.79-1.52a12 12 0 1 0 14.23-18.5Z" fill="none" stroke="#fff" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.768.966-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.496.099-.198.05-.372-.025-.521-.074-.149-.669-1.611-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.478 0 1.463 1.064 2.875 1.213 3.074.149.198 2.095 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.414.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347Z" fill="#fff"/></g></svg>
+          </div>
+        </div>
+        <p class="phones-footnote">We would borrow the phones in the name of studying. But somehow, the hours meant for books often slipped into conversations with each other.</p>
+      </div>
+    </section>
+
+<section class="scene scene-name" data-scene="6" aria-label="Friends teasing me about you">
+      <div class="name-stage">
+        <div class="chapter-overline">A NAME THAT MADE ME BLUSH</div>
+        <p class="name-lead">My friends had started teasing me with your name.</p>
+        <h2 class="memory-name">SANDHYA</h2>
+        <p class="name-follow">Whenever I heard your name, I would blush before I could stop myself.</p>
+      </div>
+    </section>
+
+<section class="scene scene-photo" data-scene="7" aria-label="The first photograph you sent me">
+      <div class="photo-memory-stage">
+        <div class="photo-copy">
+          <p class="photo-beat-one">There was something I wanted to ask you for. I wanted a photograph of you.</p>
+          <p class="photo-beat-two">But I was afraid to ask. What if you judged me? What if you wondered why I wanted a photograph of you?</p>
+          <p class="photo-beat-three">I kept thinking about it, unsure how you would react. Eventually, I gathered the courage and asked you.</p>
+          <p class="photo-beat-four">And you sent it.</p>
+          <p class="photo-beat-five">It was the very first photograph of yourself you had ever sent me.</p>
+        </div>
+        <figure class="memory-photo-frame">
+          <img class="first-photograph" data-src="assets/memories/first-photograph-floral-frame.jpg" width="869" height="1280" alt="The first photograph you sent me, displayed within an ornate floral frame" decoding="async">
+          <figcaption>THE FIRST PHOTOGRAPH YOU SENT ME</figcaption>
+        </figure>
+      </div>
+    </section>
+
+<section class="scene scene-archive" data-scene="8" aria-label="Looking back on the little moments">
+      <div class="archive-stage">
+        <div class="archive-reflection" aria-label="A reflection on those days">
+          <p>Back then, those days felt as though they would never run out.</p>
+          <p>There would always be another conversation, another ordinary day, another little moment to look forward to.</p>
+          <p class="archive-final-line">I never thought that someday, these would be the very moments I'd wish to return to, just once more.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-nov24" data-scene="9" aria-label="November 24, 2020">
+      <div class="nov24-card">
+        <div class="nov24-rule" aria-hidden="true"></div>
+        <h2>November 24</h2>
+        <div class="nov24-year">2020</div>
+        <p>And soon the day arrived when I was gonna confess everything</p>
+        <div class="nov24-rule nov24-rule-bottom" aria-hidden="true"></div>
+      </div>
+    </section>
+
+<section class="scene scene-cancelled" data-scene="10" aria-label="The day did not go as planned">
+      <div class="chapter-story-stage cancelled-stage">
+        <h2 class="story-heading">The day did not go as planned.</h2>
+        <div class="story-copy cancelled-copy">
+          <p>Our tuition class was cancelled. Sir had told me first and asked me to let the others know if anyone came, because my house was right next to the place where we held our classes.</p>
+          <p>I had planned to tell you how I felt that day. When the class was cancelled, I thought I had lost my chance. But you came anyway, not knowing the class had been cancelled.</p>
+          <p>Seeing you made me immensely happy. But when the moment came, nervousness took over. I couldn't say what I had rehearsed. I only told you that class had been cancelled.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-sunset" data-scene="11" aria-label="I chose another way">
+      <div class="sunset-stage">
+        <h2 class="story-heading">I Chose Another Way</h2>
+        <div class="sunset-horizon" aria-hidden="true"><span></span></div>
+        <div class="story-copy sunset-copy">
+          <p>As I couldn't express my feelings in person, so I decided to put them into message instead.</p>
+          <p>I kept waiting for sunset as that was usually when we talked and I was looking forward to that familiar moment. That day seemed to move more slowly than any other</p>
+          <p>My words were ready, but I wasn’t. Before I sent you the message, my heart was racing, my knee would not stay still and my hands trembled over the keyboard.</p>
+          <p>Every word seemed difficult to type. I was excited, afraid and unable to settle my thoughts.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-confession-poem" data-scene="12" aria-label="The poem I wrote for you">
+      <div class="confession-poem-stage">
+        <div class="confession-poem-intro">
+          <p>I couldn't find the courage to tell you everything I felt directly. So I wrote this poem for you, hoping the words would say what I couldn't.</p>
+        </div>
+        <h2 class="confession-poem-title">Let You Know</h2>
+        <div class="confession-poem-lines">
+          <p>Do you know I am afraid of you?</p>
+          <p>I am afraid to talk to you</p>
+          <p>I am afraid when you come to me</p>
+          <p>I am afraid to lose you</p>
+          <p>I am afraid to ask you</p>
+          <p>Would you love me?</p>
+          <p>But today I have made my mindset</p>
+          <p>To let you know everything I feel for you</p>
+        </div>
+        <a class="full-poem-link" id="fullPoemLink" href="let-you-know.html" target="_blank" rel="opener">
+          Read the complete poem <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+<section class="scene scene-night" data-scene="13" aria-label="You needed time">
+      <div class="night-stage">
+        <h2 class="story-heading">You Needed Time</h2>
+        <div class="story-copy night-copy">
+          <p>The poem had finally spoken the words I had struggled for so long to express. At last, you knew how I felt.</p>
+          <p>You weren't ready with an answer. You needed time to think, and I respected that. But waiting was harder than I had imagined. Questions kept filling my mind, returning again and again, no matter how hard I tried to push them away.</p>
+          <p>What if you said no?</p>
+          <p>What if things between us changed?</p>
+          <p>What if, in hoping for something more, I ended up losing the friendship I already cherished?</p>
+          <p>That night, my mind wouldn't rest. I couldn't sleep. I kept imagining every possible answer, every possible outcome, unable to escape the fear of what might come. It was one of the longest nights of my life.</p>
+        </div>
+        <div class="night-glimmer" aria-hidden="true"></div>
+      </div>
+    </section>
+
+<section class="scene scene-yes" data-scene="14" aria-label="November 25, 2020 — Yes">
+      <div class="yes-stage">
+        <div class="chapter-overline yes-date">November 25, 2020</div>
+        <div class="yes-rule" aria-hidden="true"></div>
+        <h2 class="yes-word">Yes.</h2>
+        <p class="yes-caption">The answer I had been waiting for.</p>
+        <div class="yes-rule yes-rule-bottom" aria-hidden="true"></div>
+      </div>
+    </section>
+
+<section class="scene scene-afterglow" data-scene="15" aria-label="Life after your yes">
+      <div class="afterglow-stage">
+        <h2 class="story-heading afterglow-heading">Life After Your Yes</h2>
+        <div class="story-copy afterglow-copy">
+          <p>It was as though the world had quietly changed its colours overnight. The same sky, the same streets, the same familiar world, yet everything seemed to have found a little more light.</p>
+          <p>The fears that had kept me company through the night slowly drifted away, like darkness retreating from a window at the first touch of dawn.</p>
+          <p>And then came the most beautiful realisation: the feelings I had been carrying in the quiet corners of my heart had found a home in yours too.</p>
+          <p>You said yes, and somewhere between those two little words, an entire world I had only ever dreamed of came alive.</p>
+          <p class="afterglow-final">Perhaps that is what happiness feels like — when a wish you have whispered to the universe finally whispers back.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-first-selfies" data-scene="16" aria-label="The first photographs together, November 28, 2020">
+      <div class="first-selfies-stage">
+        <div class="first-selfies-gallery" aria-label="The first two selfies together">
+          <figure class="first-selfie first-selfie-one">
+            <img data-src="assets/memories/nov28-selfie-1.jpg" alt="The first selfie taken together on November 28, 2020" decoding="async">
+          </figure>
+          <figure class="first-selfie first-selfie-two">
+            <img data-src="assets/memories/nov28-selfie-2.jpg" alt="The second selfie taken together on November 28, 2020" decoding="async">
+          </figure>
+        </div>
+        <div class="first-selfies-copy" aria-label="The story behind the first photographs">
+          <p>It had been just three days since we had become a couple.</p>
+          <p>On November 28, 2020, we went to tuition earlier than usual, hoping to spend a little more time together.</p>
+          <p>We were excited, but a little nervous too because our tuition was at my uncle's house, where everyone knew me. We were also afraid someone might notice us and start spreading rumours about our relationship.</p>
+          <p>That afternoon, I gently placed my hand over your shoulder as we took our first selfies together. It might have seemed like a simple gesture, but for us, it meant so much. I knew that kind of closeness was new to you, which made that little moment especially precious to both of us.</p>
+          <p>Those two photographs became our first captured memories as a couple.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-profile-memory" data-scene="17" aria-label="The photograph you made your profile picture">
+      <div class="profile-memory-stage">
+        <div class="chapter-overline profile-memory-kicker">A LITTLE REQUEST, A SPECIAL FEELING</div>
+        <figure class="profile-memory-photo-wrap">
+          <img class="profile-memory-photo" data-src="assets/memories/profile-request-photo.jpg" alt="The photograph you shared and later used as your WhatsApp profile picture" decoding="async">
+        </figure>
+        <div class="profile-memory-copy" aria-label="The story behind the photograph">
+          <p>After we got into a relationship, you once shared this photograph with me.</p>
+          <p>I jokingly asked you to put it as your WhatsApp profile picture. I said it so casually, never imagining that you would actually do it. But you put that picture up almost immediately, without hesitation or a second thought. You did it so quickly that I didn't even get the chance to tell you I was only joking.</p>
+          <p>It might have seemed like such a small thing, but for some reason, it stayed with me. Seeing you do something so simple just because I had asked made me feel that I had become someone special to you.</p>
+          <p>Perhaps it wasn't a grand gesture, but sometimes, the smallest things make us feel the most special.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene story-memory scene-red-outfit" data-scene="18" aria-label="The day I fell a little deeper">
+      <div class="story-memory-stage">
+        <div class="chapter-overline story-memory-kicker">THE DAY I FELL A LITTLE DEEPER</div>
+        <div class="story-memory-gallery story-memory-pair" aria-label="Two photographs in the red traditional outfit">
+          <figure class="story-memory-photo"><img data-src="assets/memories/red-outfit-1.jpg" alt="You in a red traditional outfit, seated on a red bench" decoding="async"></figure>
+          <figure class="story-memory-photo"><img data-src="assets/memories/red-outfit-2.jpg" alt="You in the same red traditional outfit, seated on a decorated red and gold sofa" decoding="async"></figure>
+        </div>
+        <div class="story-memory-copy" aria-label="The story behind these photographs">
+          <p>I don't think you ever realised how deeply these photographs affected me. They were taken at your neighbour's wedding, which you had attended. I was already in love with you but seeing you like this made me fall a little deeper.</p>
+          <p>I was genuinely mesmerised by the way you looked and carried yourself. Even my best friends couldn't stop praising that look of yours and I remember wishing I could have witnessed that beautiful moment with my own eyes rather than through photographs.</p>
+          <p>Perhaps you never knew how many times I went back to look at those pictures or how much happiness they brought me. Even today, whenever I look at them, I still see the same person who made me fall a little deeper in love.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene story-memory scene-picnic" data-scene="19" aria-label="The picnic I couldn't be part of">
+      <div class="story-memory-stage">
+        <div class="chapter-overline story-memory-kicker">THE PICNIC I COULDN'T BE PART OF</div>
+        <div class="story-memory-gallery story-memory-pair" aria-label="Two photographs from the tuition group's picnic">
+          <figure class="story-memory-photo"><img data-src="assets/memories/picnic-1.jpg" alt="You in a teal jacket beside the water during the tuition group's picnic" decoding="async"></figure>
+          <figure class="story-memory-photo"><img data-src="assets/memories/picnic-2.jpg" alt="You taking a selfie inside the vehicle during the tuition group's picnic outing" decoding="async"></figure>
+        </div>
+        <div class="story-memory-copy" aria-label="The story behind the picnic photographs">
+          <p>These photographs were from the picnic you went on with our tuition group.</p>
+          <p>I had wanted to be there too, but by then, my parents had found out about our relationship and wouldn't allow me to go. To make matters worse, our school had organised its own picnic just a day before theirs. I had been looking forward to this one for so long, only to end up missing it.</p>
+          <p>But honestly, it was never really about the picnic itself. It was about the time I had imagined spending with you, the memories we could have made and all those little moments we could have shared.</p>
+          <p>Even today, I sometimes wonder what that day might have been like if I had been there with you. Perhaps it would have become another beautiful memory for us to look back on.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene story-memory scene-little-pictures" data-scene="20" aria-label="The little pictures I waited for">
+      <div class="story-memory-stage story-memory-stage-collection">
+        <div class="chapter-overline story-memory-kicker">THE LITTLE PICTURES I WAITED FOR</div>
+        <div class="story-memory-gallery story-memory-collection" aria-label="Five individual photographs you sent at different times">
+          <figure class="story-memory-photo"><img data-src="assets/memories/little-picture-1.jpg" alt="A close-up photograph you sent me" decoding="async"></figure>
+          <figure class="story-memory-photo"><img data-src="assets/memories/little-picture-2.jpg" alt="A portrait photograph you sent me in a red outfit" decoding="async"></figure>
+          <figure class="story-memory-photo"><img data-src="assets/memories/little-picture-3.jpg" alt="A photograph you sent me wearing a yellow outfit" decoding="async"></figure>
+          <figure class="story-memory-photo"><img data-src="assets/memories/little-picture-4.jpg" alt="A selfie you sent me wearing a pink shirt and earphones" decoding="async"></figure>
+          <figure class="story-memory-photo"><img data-src="assets/memories/little-picture-5.jpg" alt="A portrait photograph you sent me in an orange outfit" decoding="async"></figure>
+        </div>
+        <div class="story-memory-copy story-memory-collection-copy" aria-label="The story behind the photographs you sent">
+          <p>You were never much of a photo person, so you rarely had many pictures of yourself.</p>
+          <p>I used to complain that I never had enough photographs of you to look at. And perhaps, just to make me happy, you would sometimes take a picture of yourself and send it to me, completely out of the blue.</p>
+          <p>They might have been ordinary, unplanned pictures to you, but to me, each one felt special. I would find myself looking at them again and again, holding on to those little glimpses of you.</p>
+          <p>Little did you know that those random photographs would become some of my most treasured memories of you.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene story-memory scene-last-together" data-scene="21" aria-label="Before distance found its way">
+      <div class="story-memory-stage">
+        <div class="chapter-overline story-memory-kicker">BEFORE DISTANCE FOUND ITS WAY</div>
+        <div class="story-memory-gallery story-memory-pair" aria-label="The last two photographs together before distance">
+          <figure class="story-memory-photo"><img data-src="assets/memories/last-together-1.jpg" alt="The two of us standing together during the Milad celebration at your school" decoding="async"></figure>
+          <figure class="story-memory-photo"><img data-src="assets/memories/last-together-2.jpg" alt="A closer photograph of us standing together during the Milad celebration" decoding="async"></figure>
+        </div>
+        <div class="story-memory-copy" aria-label="The story behind our last photographs together">
+          <p>These were the last photographs we took together before distance slowly found its way into our lives.</p>
+          <p>They were taken during the Milad celebration at your school. I still remember how our friends teased me when they saw these pictures, pointing out how happily we were smiling beside each other and how good we looked together.</p>
+          <p>We didn't know it then, but our paths would soon take us in different directions. You chose Arts and stayed here, while I chose Science and moved to Dhubri to continue my studies.</p>
+          <p>Looking back, there's something bittersweet about these photographs. At the time, they were simply pictures of two people smiling together. But they became the last captured moments of a chapter in which being together was still so much easier.</p>
+          <p>I didn't know then how much I would come to miss moments like these.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-separation" data-scene="22" aria-label="Our Days began to Change">
+      <div class="separation-stage">
+        <div class="separation-choices" aria-label="Our different academic choices">
+          <div class="separation-choice separation-choice-her">
+            <span class="separation-choice-label">YOUR CHOICE</span>
+            <strong>ARTS</strong>
+            <small>HALAKURA</small>
+          </div>
+          <div class="separation-choice separation-choice-mine">
+            <span class="separation-choice-label">MY CHOICE</span>
+            <strong>SCIENCE</strong>
+            <small>DHUBRI</small>
+          </div>
+        </div>
+
+        <div class="separation-copy" aria-label="What changed after our HSLC examinations">
+          <p>After HSLC, our different stream choices began taking us in different directions. You stayed in Halakura to pursue Arts, while I moved to Dhubri to study Science.</p>
+          <p>Until then, seeing you had been part of my everyday life. We attended the same tuition and lived close enough that meeting never needed planning. But now, we were in different places, and the familiar ease of seeing each other was changing. We were still together, but for the first time, distance had become a part of our story.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-hope-intro" data-scene="23" aria-label="A Little Hope">
+      <div class="hope-stage hope-intro-stage">
+        <header class="hope-heading">
+          <h2 class="hope-title">A Little Hope</h2>
+        </header>
+        <div class="hope-intro-block">
+          <p class="hope-intro-copy">Even though distance had changed the way we could meet, I wasn't ready to give up those moments with you. I knew I couldn't see you as easily as before, but I wasn't going to let go of every chance I still had. There was still one thing that connected us.</p>
+          <div class="hope-english-title" aria-label="English tuition">ENGLISH TUITION</div>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-hope-journey" data-scene="24" aria-label="The Journey">
+      <div class="hope-stage hope-journey-stage">
+        <header class="hope-journey-heading">
+          <h2 class="hope-journey-title">And that gave me a reason to make the journey.</h2>
+        </header>
+        <div class="hope-journey-block">
+          <div class="hope-map-shell">
+            <div class="hope-map-frame">
+              <img class="hope-map-image" data-src="assets/separation-map.png" alt="Cinematic route map from Dhubri to Halakura through Gauripur, Balajan, Golakganj and Agomani, marked as 39.2 kilometres" decoding="async">
+              <div class="hope-map-vignette" aria-hidden="true"></div>
+              <svg class="hope-route-overlay" viewBox="0 0 1535 1024" preserveAspectRatio="none" aria-hidden="true">
+                <path class="hope-route-cover" d="M 431.5 148.0 L 429.6 149.5 L 428.9 154.1 L 429.8 160.0 L 433.3 166.0 L 439.0 172.0 L 445.0 178.0 L 451.0 184.0 L 456.3 190.0 L 459.7 196.0 L 461.5 202.0 L 462.9 208.0 L 463.8 214.0 L 464.0 220.0 L 464.1 226.0 L 464.5 232.0 L 464.9 238.0 L 465.0 244.0 L 465.0 250.0 L 465.0 256.0 L 465.0 262.0 L 465.0 268.0 L 465.0 274.0 L 464.9 280.0 L 464.3 286.0 L 463.6 292.0 L 462.8 298.0 L 462.5 304.0 L 462.9 310.0 L 463.7 316.0 L 464.9 321.9 L 467.8 326.9 L 473.0 329.4 L 479.0 329.5 L 485.0 330.4 L 491.0 332.4 L 497.0 332.6 L 503.0 331.0 L 509.0 329.3 L 515.0 327.8 L 521.0 327.1 L 527.0 327.3 L 533.0 328.0 L 539.0 329.0 L 545.0 329.9 L 551.0 330.8 L 557.0 331.6 L 563.0 332.3 L 569.0 333.1 L 575.0 333.8 L 581.0 334.3 L 587.0 335.0 L 593.0 335.6 L 599.0 336.3 L 605.0 337.0 L 611.0 337.7 L 617.0 339.3 L 623.0 341.4 L 629.0 343.6 L 635.0 345.7 L 641.0 347.8 L 647.0 349.8 L 653.0 351.2 L 659.0 352.3 L 665.0 353.2 L 671.0 354.2 L 677.0 355.4 L 683.0 356.5 L 689.0 357.6 L 695.0 358.7 L 701.0 359.7 L 707.0 360.8 L 713.0 362.2 L 719.0 363.7 L 725.0 365.1 L 731.0 366.6 L 737.0 368.1 L 743.0 369.6 L 749.0 371.0 L 755.0 372.5 L 761.0 373.8 L 767.0 375.2 L 773.0 376.8 L 779.0 378.9 L 785.0 381.8 L 790.9 385.0 L 796.0 389.4 L 798.6 395.0 L 801.2 400.6 L 806.1 404.0 L 812.0 403.7 L 818.0 400.7 L 824.0 399.0 L 830.0 399.6 L 836.0 400.5 L 842.0 400.9 L 848.0 401.1 L 854.0 401.5 L 860.0 402.0 L 866.0 402.1 L 872.0 402.8 L 878.0 404.1 L 884.0 405.6 L 890.0 407.1 L 896.0 408.8 L 902.0 410.5 L 908.0 412.1 L 914.0 413.4 L 920.0 414.8 L 926.0 416.0 L 932.0 416.9 L 938.0 417.8 L 944.0 419.0 L 950.0 420.2 L 956.0 421.5 L 961.7 423.3 L 965.9 427.3 L 969.2 432.8 L 974.1 437.5 L 979.1 441.7 L 982.2 447.0 L 984.2 453.0 L 986.1 459.0 L 988.3 465.0 L 990.4 471.0 L 992.6 477.0 L 994.7 483.0 L 996.9 489.0 L 999.2 495.0 L 1001.4 501.0 L 1003.6 507.0 L 1006.1 513.0 L 1009.7 518.7 L 1015.0 523.1 L 1021.0 526.1 L 1027.0 528.3 L 1033.0 530.9 L 1039.0 534.7 L 1045.0 539.6 L 1051.0 544.8 L 1056.5 550.2 L 1061.3 556.0 L 1065.9 562.0 L 1070.6 567.3 L 1076.1 571.1 L 1082.0 574.0 L 1088.0 576.4 L 1094.0 577.7 L 1100.0 577.4 L 1106.0 576.3 L 1112.0 575.2 L 1118.0 574.2 L 1124.0 573.2 L 1130.0 572.2 L 1136.0 571.2 L 1142.0 570.2 L 1148.0 569.2 L 1154.0 568.4 L 1160.0 568.8 L 1165.6 570.9 L 1170.1 575.2 L 1175.1 581.0 L 1181.0 587.0 L 1186.6 593.0 L 1191.2 599.0 L 1195.0 605.0 L 1198.0 611.0 L 1200.2 617.0 L 1201.5 623.0 L 1202.0 629.0 L 1202.0 635.0 L 1202.0 641.0 L 1202.0 647.0 L 1202.0 653.0 L 1202.0 659.0 L 1202.0 665.0 L 1202.2 671.0 L 1203.2 677.0 L 1204.7 683.0 L 1206.2 689.0 L 1207.7 695.0 L 1209.2 701.0 L 1210.7 707.0 L 1212.0 713.0 L 1213.2 719.0 L 1214.7 725.0 L 1216.1 731.0 L 1216.0 737.0 L 1213.6 743.0 L 1211.8 749.0 L 1213.2 754.9 L 1217.5 760.4 L 1220.1 766.0 L 1219.5 772.0 L 1218.1 778.0 L 1216.6 784.0 L 1215.1 790.0 L 1213.5 796.0 L 1211.9 802.0 L 1210.1 808.0 L 1208.5 814.0 L 1207.0 820.0 L 1205.9 826.0 L 1205.2 832.0 L 1205.2 838.0 L 1206.0 844.0 L 1207.8 850.0 L 1210.2 856.0 L 1213.2 862.0 L 1216.3 868.0 L 1219.5 874.0 L 1222.7 880.0 L 1225.9 886.0 L 1229.8 892.0 L 1235.1 897.4 L 1240.7 900.4 L 1245.2 902.7 L 1247.5 905.3" />
+                <path class="hope-route-glow" id="hopeRouteGlow" d="M 431.5 148.0 L 429.6 149.5 L 428.9 154.1 L 429.8 160.0 L 433.3 166.0 L 439.0 172.0 L 445.0 178.0 L 451.0 184.0 L 456.3 190.0 L 459.7 196.0 L 461.5 202.0 L 462.9 208.0 L 463.8 214.0 L 464.0 220.0 L 464.1 226.0 L 464.5 232.0 L 464.9 238.0 L 465.0 244.0 L 465.0 250.0 L 465.0 256.0 L 465.0 262.0 L 465.0 268.0 L 465.0 274.0 L 464.9 280.0 L 464.3 286.0 L 463.6 292.0 L 462.8 298.0 L 462.5 304.0 L 462.9 310.0 L 463.7 316.0 L 464.9 321.9 L 467.8 326.9 L 473.0 329.4 L 479.0 329.5 L 485.0 330.4 L 491.0 332.4 L 497.0 332.6 L 503.0 331.0 L 509.0 329.3 L 515.0 327.8 L 521.0 327.1 L 527.0 327.3 L 533.0 328.0 L 539.0 329.0 L 545.0 329.9 L 551.0 330.8 L 557.0 331.6 L 563.0 332.3 L 569.0 333.1 L 575.0 333.8 L 581.0 334.3 L 587.0 335.0 L 593.0 335.6 L 599.0 336.3 L 605.0 337.0 L 611.0 337.7 L 617.0 339.3 L 623.0 341.4 L 629.0 343.6 L 635.0 345.7 L 641.0 347.8 L 647.0 349.8 L 653.0 351.2 L 659.0 352.3 L 665.0 353.2 L 671.0 354.2 L 677.0 355.4 L 683.0 356.5 L 689.0 357.6 L 695.0 358.7 L 701.0 359.7 L 707.0 360.8 L 713.0 362.2 L 719.0 363.7 L 725.0 365.1 L 731.0 366.6 L 737.0 368.1 L 743.0 369.6 L 749.0 371.0 L 755.0 372.5 L 761.0 373.8 L 767.0 375.2 L 773.0 376.8 L 779.0 378.9 L 785.0 381.8 L 790.9 385.0 L 796.0 389.4 L 798.6 395.0 L 801.2 400.6 L 806.1 404.0 L 812.0 403.7 L 818.0 400.7 L 824.0 399.0 L 830.0 399.6 L 836.0 400.5 L 842.0 400.9 L 848.0 401.1 L 854.0 401.5 L 860.0 402.0 L 866.0 402.1 L 872.0 402.8 L 878.0 404.1 L 884.0 405.6 L 890.0 407.1 L 896.0 408.8 L 902.0 410.5 L 908.0 412.1 L 914.0 413.4 L 920.0 414.8 L 926.0 416.0 L 932.0 416.9 L 938.0 417.8 L 944.0 419.0 L 950.0 420.2 L 956.0 421.5 L 961.7 423.3 L 965.9 427.3 L 969.2 432.8 L 974.1 437.5 L 979.1 441.7 L 982.2 447.0 L 984.2 453.0 L 986.1 459.0 L 988.3 465.0 L 990.4 471.0 L 992.6 477.0 L 994.7 483.0 L 996.9 489.0 L 999.2 495.0 L 1001.4 501.0 L 1003.6 507.0 L 1006.1 513.0 L 1009.7 518.7 L 1015.0 523.1 L 1021.0 526.1 L 1027.0 528.3 L 1033.0 530.9 L 1039.0 534.7 L 1045.0 539.6 L 1051.0 544.8 L 1056.5 550.2 L 1061.3 556.0 L 1065.9 562.0 L 1070.6 567.3 L 1076.1 571.1 L 1082.0 574.0 L 1088.0 576.4 L 1094.0 577.7 L 1100.0 577.4 L 1106.0 576.3 L 1112.0 575.2 L 1118.0 574.2 L 1124.0 573.2 L 1130.0 572.2 L 1136.0 571.2 L 1142.0 570.2 L 1148.0 569.2 L 1154.0 568.4 L 1160.0 568.8 L 1165.6 570.9 L 1170.1 575.2 L 1175.1 581.0 L 1181.0 587.0 L 1186.6 593.0 L 1191.2 599.0 L 1195.0 605.0 L 1198.0 611.0 L 1200.2 617.0 L 1201.5 623.0 L 1202.0 629.0 L 1202.0 635.0 L 1202.0 641.0 L 1202.0 647.0 L 1202.0 653.0 L 1202.0 659.0 L 1202.0 665.0 L 1202.2 671.0 L 1203.2 677.0 L 1204.7 683.0 L 1206.2 689.0 L 1207.7 695.0 L 1209.2 701.0 L 1210.7 707.0 L 1212.0 713.0 L 1213.2 719.0 L 1214.7 725.0 L 1216.1 731.0 L 1216.0 737.0 L 1213.6 743.0 L 1211.8 749.0 L 1213.2 754.9 L 1217.5 760.4 L 1220.1 766.0 L 1219.5 772.0 L 1218.1 778.0 L 1216.6 784.0 L 1215.1 790.0 L 1213.5 796.0 L 1211.9 802.0 L 1210.1 808.0 L 1208.5 814.0 L 1207.0 820.0 L 1205.9 826.0 L 1205.2 832.0 L 1205.2 838.0 L 1206.0 844.0 L 1207.8 850.0 L 1210.2 856.0 L 1213.2 862.0 L 1216.3 868.0 L 1219.5 874.0 L 1222.7 880.0 L 1225.9 886.0 L 1229.8 892.0 L 1235.1 897.4 L 1240.7 900.4 L 1245.2 902.7 L 1247.5 905.3" />
+                <path class="hope-route-core" id="hopeRouteCore" d="M 431.5 148.0 L 429.6 149.5 L 428.9 154.1 L 429.8 160.0 L 433.3 166.0 L 439.0 172.0 L 445.0 178.0 L 451.0 184.0 L 456.3 190.0 L 459.7 196.0 L 461.5 202.0 L 462.9 208.0 L 463.8 214.0 L 464.0 220.0 L 464.1 226.0 L 464.5 232.0 L 464.9 238.0 L 465.0 244.0 L 465.0 250.0 L 465.0 256.0 L 465.0 262.0 L 465.0 268.0 L 465.0 274.0 L 464.9 280.0 L 464.3 286.0 L 463.6 292.0 L 462.8 298.0 L 462.5 304.0 L 462.9 310.0 L 463.7 316.0 L 464.9 321.9 L 467.8 326.9 L 473.0 329.4 L 479.0 329.5 L 485.0 330.4 L 491.0 332.4 L 497.0 332.6 L 503.0 331.0 L 509.0 329.3 L 515.0 327.8 L 521.0 327.1 L 527.0 327.3 L 533.0 328.0 L 539.0 329.0 L 545.0 329.9 L 551.0 330.8 L 557.0 331.6 L 563.0 332.3 L 569.0 333.1 L 575.0 333.8 L 581.0 334.3 L 587.0 335.0 L 593.0 335.6 L 599.0 336.3 L 605.0 337.0 L 611.0 337.7 L 617.0 339.3 L 623.0 341.4 L 629.0 343.6 L 635.0 345.7 L 641.0 347.8 L 647.0 349.8 L 653.0 351.2 L 659.0 352.3 L 665.0 353.2 L 671.0 354.2 L 677.0 355.4 L 683.0 356.5 L 689.0 357.6 L 695.0 358.7 L 701.0 359.7 L 707.0 360.8 L 713.0 362.2 L 719.0 363.7 L 725.0 365.1 L 731.0 366.6 L 737.0 368.1 L 743.0 369.6 L 749.0 371.0 L 755.0 372.5 L 761.0 373.8 L 767.0 375.2 L 773.0 376.8 L 779.0 378.9 L 785.0 381.8 L 790.9 385.0 L 796.0 389.4 L 798.6 395.0 L 801.2 400.6 L 806.1 404.0 L 812.0 403.7 L 818.0 400.7 L 824.0 399.0 L 830.0 399.6 L 836.0 400.5 L 842.0 400.9 L 848.0 401.1 L 854.0 401.5 L 860.0 402.0 L 866.0 402.1 L 872.0 402.8 L 878.0 404.1 L 884.0 405.6 L 890.0 407.1 L 896.0 408.8 L 902.0 410.5 L 908.0 412.1 L 914.0 413.4 L 920.0 414.8 L 926.0 416.0 L 932.0 416.9 L 938.0 417.8 L 944.0 419.0 L 950.0 420.2 L 956.0 421.5 L 961.7 423.3 L 965.9 427.3 L 969.2 432.8 L 974.1 437.5 L 979.1 441.7 L 982.2 447.0 L 984.2 453.0 L 986.1 459.0 L 988.3 465.0 L 990.4 471.0 L 992.6 477.0 L 994.7 483.0 L 996.9 489.0 L 999.2 495.0 L 1001.4 501.0 L 1003.6 507.0 L 1006.1 513.0 L 1009.7 518.7 L 1015.0 523.1 L 1021.0 526.1 L 1027.0 528.3 L 1033.0 530.9 L 1039.0 534.7 L 1045.0 539.6 L 1051.0 544.8 L 1056.5 550.2 L 1061.3 556.0 L 1065.9 562.0 L 1070.6 567.3 L 1076.1 571.1 L 1082.0 574.0 L 1088.0 576.4 L 1094.0 577.7 L 1100.0 577.4 L 1106.0 576.3 L 1112.0 575.2 L 1118.0 574.2 L 1124.0 573.2 L 1130.0 572.2 L 1136.0 571.2 L 1142.0 570.2 L 1148.0 569.2 L 1154.0 568.4 L 1160.0 568.8 L 1165.6 570.9 L 1170.1 575.2 L 1175.1 581.0 L 1181.0 587.0 L 1186.6 593.0 L 1191.2 599.0 L 1195.0 605.0 L 1198.0 611.0 L 1200.2 617.0 L 1201.5 623.0 L 1202.0 629.0 L 1202.0 635.0 L 1202.0 641.0 L 1202.0 647.0 L 1202.0 653.0 L 1202.0 659.0 L 1202.0 665.0 L 1202.2 671.0 L 1203.2 677.0 L 1204.7 683.0 L 1206.2 689.0 L 1207.7 695.0 L 1209.2 701.0 L 1210.7 707.0 L 1212.0 713.0 L 1213.2 719.0 L 1214.7 725.0 L 1216.1 731.0 L 1216.0 737.0 L 1213.6 743.0 L 1211.8 749.0 L 1213.2 754.9 L 1217.5 760.4 L 1220.1 766.0 L 1219.5 772.0 L 1218.1 778.0 L 1216.6 784.0 L 1215.1 790.0 L 1213.5 796.0 L 1211.9 802.0 L 1210.1 808.0 L 1208.5 814.0 L 1207.0 820.0 L 1205.9 826.0 L 1205.2 832.0 L 1205.2 838.0 L 1206.0 844.0 L 1207.8 850.0 L 1210.2 856.0 L 1213.2 862.0 L 1216.3 868.0 L 1219.5 874.0 L 1222.7 880.0 L 1225.9 886.0 L 1229.8 892.0 L 1235.1 897.4 L 1240.7 900.4 L 1245.2 902.7 L 1247.5 905.3" />
+                <circle class="hope-route-runner" id="hopeRouteRunner" r="12" cx="423" cy="137" />
+                <g class="hope-waypoints">
+                  <circle cx="480" cy="337" r="7" data-route-progress="0.1515" />
+                  <circle cx="808" cy="397" r="7" data-route-progress="0.4033" />
+                  <circle cx="978" cy="428" r="7" data-route-progress="0.5306" />
+                  <circle cx="1220" cy="750" r="7" data-route-progress="0.8735" />
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div class="hope-copy" aria-label="The reason for the journey">
+            <p>During weekends and holidays, I would travel from Dhubri to Halakura just to attend the same English tuition as you.</p>
+            <p>On the surface, it was about improving my English. But deep down, I knew you were the real reason I kept making that journey. I didn't want to miss any chance to see you, even if it meant travelling all that way just to spend a little more time in the same room.</p>
+            <p>Somehow, those ordinary weekends became something I would always remember.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="scene story-memory scene-early-tuition" data-scene="25" aria-label="A little earlier than everyone else">
+      <div class="story-memory-stage">
+        <div class="chapter-overline story-memory-kicker">A LITTLE EARLIER THAN EVERYONE ELSE</div>
+        <div class="story-memory-gallery story-memory-pair" aria-label="Two early-tuition selfies together">
+          <figure class="story-memory-photo"><img data-src="assets/memories/early-tuition-selfie-1.jpg" alt="A selfie of us together before tuition" decoding="async"></figure>
+          <figure class="story-memory-photo"><img data-src="assets/memories/early-tuition-selfie-2.jpg" alt="Another selfie of us together during those early tuition days" decoding="async"></figure>
+        </div>
+        <div class="story-memory-copy" aria-label="The story behind our early arrivals at tuition">
+          <p>We would always reach tuition a little earlier than everyone else, just to steal a few moments together before the others arrived.</p>
+          <p>Those little moments meant so much to us because we rarely got to see each other. Since I could only attend tuition on holidays and weekends, every meeting felt special.</p>
+          <p>We would go days without seeing each other, so whenever we finally met, even the simplest moments together felt precious.</p>
+          <p>Looking back, it wasn't just about reaching tuition early; it was about finding a little more time with each other whenever life allowed us to.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene story-memory scene-little-moments" data-scene="26" aria-label="The little moments I miss">
+      <div class="story-memory-stage">
+        <div class="chapter-overline story-memory-kicker">THE LITTLE MOMENTS I MISS</div>
+        <div class="story-memory-gallery story-memory-single" aria-label="A photograph from our tuition days">
+          <figure class="story-memory-photo"><img data-src="assets/memories/little-moments-tuition.jpg" alt="A selfie of us sitting together during our tuition days" decoding="async"></figure>
+        </div>
+        <div class="story-memory-copy" aria-label="The story behind the little moments together">
+          <p>I have always felt grateful for those tuition days because they gave me something I might never have found otherwise — a chance to meet you.</p>
+          <p>Since we could only see each other occasionally, even the shortest moments felt special. Sitting beside you, hearing your voice and talking face to face meant more to me than I ever realised. I never knew how much I would miss those little moments until they became memories I could only look back on.</p>
+          <p>Specially in our later days, I found myself wishing I could sit beside you again, hear you speak and simply enjoy having you near. What once felt so ordinary became some of the most precious memories I would ever hold.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene story-memory scene-durga-puja" data-scene="27" aria-label="A day I wish I could revisit">
+      <div class="story-memory-stage">
+        <div class="chapter-overline story-memory-kicker">A DAY I WISH I COULD REVISIT</div>
+        <div class="story-memory-gallery story-memory-pair" aria-label="Two portraits from the Durga Puja felicitation day">
+          <figure class="story-memory-photo"><img data-src="assets/memories/durga-puja-portrait-1.jpg" alt="You standing beside a decorated shrub at the Durga Puja felicitation event" decoding="async"></figure>
+          <figure class="story-memory-photo"><img data-src="assets/memories/durga-puja-portrait-2.jpg" alt="You standing in front of a decorated green backdrop at the same event" decoding="async"></figure>
+        </div>
+        <div class="story-memory-copy" aria-label="The story behind the Durga Puja photographs">
+          <p>We were invited by the Durga Puja committee to be felicitated for our HSLC results. We spent such a beautiful time together that day, creating memories without realising how precious they would become.</p>
+          <p>We also took some pictures together, but unfortunately, I lost them.</p>
+          <p>It still hurts a little because those were probably the most beautiful pictures of us ever captured. I wish I could have kept them, not just as photographs, but as little pieces of a moment I wish I could revisit.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene story-memory scene-saraswati-puja" data-scene="28" aria-label="The day I chose to come home">
+      <div class="story-memory-stage">
+        <div class="chapter-overline story-memory-kicker">THE DAY I CHOSE TO COME HOME</div>
+        <div class="story-memory-gallery story-memory-single" aria-label="A photograph from Saraswati Puja 2023">
+          <figure class="story-memory-photo"><img data-src="assets/memories/saraswati-puja-2023.jpg" alt="The two of us together outdoors on Saraswati Puja in 2023" decoding="async"></figure>
+        </div>
+        <div class="story-memory-copy" aria-label="The story behind Saraswati Puja 2023">
+          <p>This picture holds a very special place in my heart. It was taken on Saraswati Puja in 2023, a day I still remember fondly. I had chosen to come home to spend the occasion with you, leaving behind my school and friends in Dhubri. Instead of celebrating the festival there, I decided to come home just to be with you.</p>
+          <p>Although you were quite occupied with your school responsibilities as a member of the puja committee, we still managed to create some beautiful memories together.</p>
+          <p>Looking back, it wasn't about how much time we spent together. What made that day special was the simple fact that I had chosen to be where you were. And somehow, that ordinary day became one of those memories I will always hold close to my heart.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene story-memory scene-tuition-ending" data-scene="29" aria-label="When our tuition days came to an end">
+      <div class="story-memory-stage">
+        <div class="chapter-overline story-memory-kicker">WHEN OUR TUITION DAYS CAME TO AN END</div>
+        <div class="story-memory-gallery story-memory-single" aria-label="A photograph together from the final tuition period">
+          <figure class="story-memory-photo"><img data-src="assets/memories/tuition-days-ending.jpg" alt="The two of us standing together during the final period of our tuition days" decoding="async"></figure>
+        </div>
+        <div class="story-memory-copy" aria-label="The story behind the end of our tuition days">
+          <p>And soon came another painful day — the end of our tuition days. With our HS examinations approaching, our classes finally came to an end, taking away the little opportunity we had to see each other.</p>
+          <p>Those classes had become more than just a place to study. They gave us a reason to meet, even if only occasionally. Those brief moments beside you made me genuinely happy, and the thought of losing them was heartbreaking.</p>
+          <p>Once again, distance stood between us. But this time, there would be no more tuition classes, no occasional encounters, and I didn't know when I would get to see you again.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-new-beginnings" data-scene="30" aria-label="After HS, Our Life Changed Completely">
+      <div class="new-beginnings-stage">
+        <header class="new-beginnings-heading">
+          <h2 class="new-beginnings-title">After HS, Our Life Changed Completely</h2>
+        </header>
+
+        <div class="new-beginnings-gallery" aria-label="The two institutes where our new academic chapters began">
+          <article class="new-beginnings-card">
+            <figure class="new-beginnings-photo new-beginnings-photo-mine">
+              <img data-src="assets/memories/potential-concept-education-guwahati.webp" alt="Students and teachers gathered outside Potential &amp; Concept Education in Guwahati" decoding="async">
+            </figure>
+            <div class="new-beginnings-details new-beginnings-details-mine">
+              <h3 class="new-beginnings-institute">Potential &amp; Concept Education</h3>
+              <p class="new-beginnings-place">Guwahati</p>
+              <p class="new-beginnings-caption">My New Beginning</p>
+            </div>
+          </article>
+
+          <article class="new-beginnings-card">
+            <figure class="new-beginnings-photo new-beginnings-photo-hers">
+              <img data-src="assets/memories/halakura-college.jpg" alt="The entrance gate of Halakura College in Halakura" decoding="async">
+            </figure>
+            <div class="new-beginnings-details new-beginnings-details-hers">
+              <h3 class="new-beginnings-institute">Halakura College</h3>
+              <p class="new-beginnings-place">Halakura</p>
+              <p class="new-beginnings-caption">Your New Beginning</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="new-beginnings-copy" aria-label="What changed after HS">
+          <p>From this point on, everything began to change. I moved to Guwahati to prepare for NEET, while you began your college life. We were no longer walking the same academic path. Our subjects, our routines, our surroundings — everything had become different.</p>
+          <p>And as if that wasn't enough, we were now hundreds of kilometres away from each other. The days when we could meet, spend time together or simply see each other without making any special plans were gone. We could no longer be a part of each other's everyday lives the way we used to be.</p>
+          <p>Slowly, the distance between us was no longer just about kilometres; it had become a part of our everyday reality.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-whatsapp-memory" data-scene="31" aria-label="A Different Kind of Togetherness">
+      <div class="whatsapp-memory-stage">
+        <header class="whatsapp-memory-heading">
+          <h2 class="whatsapp-memory-title">A Different Kind of Togetherness</h2>
+        </header>
+
+        <p class="whatsapp-memory-intro">Even when we couldn't meet, we still found ways to be part of each other's everyday lives.</p>
+
+        <div class="whatsapp-video-shell" aria-label="Original WhatsApp conversation screen recording">
+          <video class="whatsapp-memory-video" controls playsinline muted preload="none" aria-label="WhatsApp conversation screen recording">
+            <source src="assets/memories/whatsapp-conversations.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+          </video>
+        </div>
+
+        <div class="whatsapp-memory-copy" aria-label="How we stayed connected through WhatsApp">
+          <p>Even though we were now hundreds of kilometres apart, we continued to stay connected through WhatsApp messages. Our conversations became one of the ways we remained part of each other's everyday lives.</p>
+          <p>We talked about ordinary things, shared little updates, discussed our studies and told each other about what was happening around us. We could no longer meet whenever we wanted, but we still found ways to share our days.</p>
+          <p>The distance had changed how we spent time together, but our conversations continued. In a way, WhatsApp became the place where our everyday moments could still meet.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-whatsapp-calls" data-scene="32" aria-label="The Calls We Kept Quiet">
+      <div class="whatsapp-calls-stage">
+        <header class="whatsapp-calls-heading">
+          <h2 class="whatsapp-calls-title">The Calls We Kept Quiet</h2>
+        </header>
+        <p class="whatsapp-calls-intro">We found little ways to make the distance feel less distant.</p>
+        <div class="whatsapp-calls-video-shell" aria-label="WhatsApp video-call history screen recording">
+          <video class="whatsapp-calls-video" controls playsinline muted preload="none" aria-label="WhatsApp video-call history screen recording">
+            <source src="assets/memories/whatsapp-video-calls.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+          </video>
+        </div>
+        <div class="whatsapp-calls-copy" aria-label="Our late-night muted video calls">
+          <p>We usually found time for each other late at night. Along with our WhatsApp messages, video calls became another part of our everyday routine.</p>
+          <p>But our video calls were a little different. Since we didn't want others around us to know that we were on a call, we would keep our microphones muted. Instead of speaking, we would text each other while looking at one another through the screen.</p>
+          <p>It might seem unusual to someone else, but for us, it became a familiar little habit. We could see each other's faces, read each other's messages and spend time together without saying a word. Even though we were far apart, those late-night calls gave us moments when the distance seemed a little less difficult.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene story-memory scene-picture-keepsakes" data-scene="33" aria-label="The Pictures I Kept as Treasures">
+      <div class="story-memory-stage story-memory-stage-collection picture-keepsakes-stage">
+        <div class="chapter-overline story-memory-kicker">THE PICTURES I KEPT AS TREASURES</div>
+        <div class="story-memory-gallery story-memory-collection picture-keepsakes-gallery" aria-label="Five photographs you shared with me">
+          <figure class="story-memory-photo"><img data-src="assets/memories/picture-keepsake-01.jpg" alt="Portrait in a pink top, photographed outdoors among green foliage" decoding="async"></figure>
+          <figure class="story-memory-photo"><img data-src="assets/memories/picture-keepsake-02.jpg" alt="Photograph in a blue patterned sari, seated outside" decoding="async"></figure>
+          <figure class="story-memory-photo"><img data-src="assets/memories/picture-keepsake-03.jpg" alt="Photograph in a light-coloured sari, standing on a grassy campus" decoding="async"></figure>
+          <figure class="story-memory-photo"><img data-src="assets/memories/picture-keepsake-04.jpg" alt="Photograph in a blue outfit beside the water" decoding="async"></figure>
+          <figure class="story-memory-photo"><img data-src="assets/memories/picture-keepsake-05.jpg" alt="Photograph in a green sari among trees" decoding="async"></figure>
+        </div>
+        <div class="story-memory-copy story-memory-collection-copy picture-keepsakes-copy" aria-label="The photographs I treasured">
+          <p>Whenever you clicked a picture, you would share it with me. And every time you sent me one, I would save it, keeping it as a little treasure of my own.</p>
+          <p>I often went back to look at those pictures. They may have been just photographs to you, but to me, they meant much more. Each one gave me a chance to see you, even when we were miles apart.</p>
+          <p>Slowly, those pictures became a collection of memories I held close to my heart. I don't know if you ever realised how much happiness those simple photographs brought me, but I treasured every single one.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-just-a-glimpse" data-scene="34" aria-label="Just a Glimpse of You">
+      <div class="just-a-glimpse-stage">
+        <h2 class="just-a-glimpse-title">Just a Glimpse of You</h2>
+        <div class="just-a-glimpse-copy">
+          <p>Whenever I returned home from Guwahati, there was one little thing I often found myself doing. I would pass in front of your house, hoping to catch a glimpse of you.</p>
+          <p>I knew I couldn't just come and meet you like before. We had grown distant, and even the simplest opportunity to see you had become something I couldn't take for granted.</p>
+          <p>Sometimes, I would see you from a distance. It might have lasted only a few seconds, without a conversation or even a proper meeting. But those little glimpses meant more to me than you probably ever knew.</p>
+          <p>I wasn't expecting anything. I just wanted to see you, even if it was only for a moment. And sometimes, that brief sight of you was enough to make my day a little more special.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene chapter-text-scene scene-returning-home" data-scene="35" aria-label="A New Beginning, Back at Home">
+      <div class="chapter-text-stage">
+        <h2 class="chapter-text-title">A New Beginning, Back at Home</h2>
+        <div class="chapter-text-copy returning-home-copy">
+          <p>After spending my first drop year in Guwahati, things didn't turn out the way I had hoped. I couldn't clear NEET, and I had to return home.</p>
+          <p>It was a difficult outcome to accept, but I wasn't ready to give up on my dream. I decided to take another drop and continue preparing for NEET. However, this time, things would be different. Instead of moving away again, I decided to stay at home and prepare through online classes.</p>
+          <p>A new phase of my life was beginning. I was back home, no longer hundreds of kilometres away and ready to start another year of preparation.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene chapter-text-scene scene-closer-apart" data-scene="36" aria-label="Closer, Yet Still Apart">
+      <div class="chapter-text-stage">
+        <h2 class="chapter-text-title">Closer, Yet Still Apart</h2>
+        <div class="chapter-text-copy closer-apart-copy">
+          <p>With my second NEET drop beginning, I had to move to Pokalagi, about 3 km from Halakura, to live with my parents, as my younger brother had moved to Halakura to stay with Bapi and Baroma so he could attend school and tuition more conveniently.</p>
+          <p>Most of my days were spent studying, so I rarely went out without a reason. But whenever I visited Halakura, I chose the slightly longer route past your house, hoping to catch a glimpse of you. I rarely did, but I never wanted to miss even that small chance. Our tuition days were over, and with them, one of the few opportunities we had to meet.</p>
+          <p>After spending so long hundreds of kilometres apart, we were now just three kilometres away. Yet, even then, seeing you remained a distant little wish.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-second-drop-connection" data-scene="37" aria-label="Still Connected, Even From Afar">
+      <div class="second-drop-connection-stage">
+        <header class="second-drop-connection-heading">
+          <h2 class="second-drop-connection-title">Still Connected, Even From Afar</h2>
+        </header>
+
+        <div class="second-drop-connection-media" aria-label="WhatsApp conversation recording and four photographs">
+          <div class="second-drop-connection-video-shell" aria-label="WhatsApp chat screen recording">
+            <video class="second-drop-connection-video" controls playsinline muted preload="none" aria-label="WhatsApp chat screen recording">
+              <source src="assets/memories/second-drop-whatsapp-chat.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <div class="second-drop-connection-gallery" aria-label="Four photographs you shared with me">
+            <figure class="second-drop-connection-photo"><img data-src="assets/memories/second-drop-photo-01.jpeg" alt="Photograph seated on a large rock in a dark outfit" decoding="async"></figure>
+            <figure class="second-drop-connection-photo"><img data-src="assets/memories/second-drop-photo-02.jpg" alt="Portrait in a bright pink outfit beside a window" decoding="async"></figure>
+            <figure class="second-drop-connection-photo"><img data-src="assets/memories/second-drop-photo-03.jpg" alt="Selfie in a bright pink outfit indoors" decoding="async"></figure>
+            <figure class="second-drop-connection-photo"><img data-src="assets/memories/second-drop-photo-04.jpeg" alt="Photograph in a grey-blue sari outside a building" decoding="async"></figure>
+          </div>
+        </div>
+
+        <div class="second-drop-connection-copy" aria-label="How we stayed connected during my second drop year">
+          <p>Even during my second drop year, we continued to stay connected through WhatsApp. You still shared your pictures with me, and our conversations continued through messages and video calls.</p>
+          <p>Although we couldn't meet in person, these little exchanges kept us connected. I saved the photographs you sent and treasured them, just as I had before.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-jan23-date" data-scene="38" aria-label="The Day We Finally Had Time for Each Other">
+      <div class="jan23-date-stage">
+        <header class="jan23-date-heading">
+          <h2 class="jan23-date-title">The Day We Finally Had Time for Each Other</h2>
+          <p class="jan23-date-kicker">23 JANUARY 2026 · SARASWATI PUJA</p>
+        </header>
+        <div class="jan23-date-gallery" aria-label="Photographs from our day in Tufanganj">
+          <figure class="jan23-date-photo"><img data-src="assets/memories/tufanganj-jan23-2026-01.jpg" alt="Together at the restaurant, with your head resting on my shoulder" decoding="async"></figure>
+          <figure class="jan23-date-photo"><img data-src="assets/memories/tufanganj-jan23-2026-02.jpg" alt="Standing together at the restaurant in Tufanganj" decoding="async"></figure>
+          <figure class="jan23-date-photo"><img data-src="assets/memories/tufanganj-jan23-2026-03.jpg" alt="Sitting close together at the restaurant" decoding="async"></figure>
+        </div>
+        <div class="jan23-date-copy" aria-label="Our Saraswati Puja date in Tufanganj">
+          <p>After so many years of barely getting to spend time together, we finally went on a date to Tufanganj, accompanied by one of your friends and her partner. You and your friend travelled by public transport, while I rode my scooty with her partner. We went to a restaurant, where we finally got to spend some quality time together.</p>
+          <p>For the first time, we weren't trying to make the most of a few brief moments at tuition or looking at each other through a phone screen. You were right there beside me. I could hold your hand, hold you by the waist and feel you rest your head on my shoulder. And perhaps what made it even more special was that, for once, I wasn't afraid of others seeing us together. I could simply be beside you without worrying about who might notice us.</p>
+          <p>But more than any particular moment, what I treasured most was your presence. After years of messages, calls and wishing I could see you, you were finally sitting beside me. We weren't separated by a screen anymore. We could talk, share moments and simply enjoy being together.</p>
+          <p>For all those years, I had wished for moments like these. And that day, I finally got to live them without holding back.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-last-glimpses" data-scene="39" aria-label="The Last Little Glimpses of You">
+      <div class="last-glimpses-stage">
+        <header class="last-glimpses-heading">
+          <h2 class="last-glimpses-title">The Last Little Glimpses of You</h2>
+        </header>
+
+        <div class="last-glimpses-media" aria-label="Two photographs and a video you shared">
+          <figure class="last-glimpses-photo last-glimpses-photo-left">
+            <img data-src="assets/memories/last-glimpse-photo-01.jpeg" alt="A portrait you shared with me" decoding="async">
+          </figure>
+          <div class="last-glimpses-video-shell" aria-label="The last video you shared with me">
+            <video class="last-glimpses-video" controls playsinline muted preload="none" aria-label="Video you shared with me">
+              <source src="assets/memories/last-glimpses-video.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+            <button class="last-glimpses-audio-toggle" type="button" aria-label="Unmute video" aria-pressed="false">Unmute</button>
+          </div>
+          <figure class="last-glimpses-photo last-glimpses-photo-right">
+            <img data-src="assets/memories/last-glimpse-photo-02.jpeg" alt="Another portrait you shared with me" decoding="async">
+          </figure>
+        </div>
+
+        <div class="last-glimpses-copy" aria-label="Why these photographs and video remain special to me">
+          <p>You continued sharing your pictures and little videos with me, just as you had always done. These were part of our usual conversations, and receiving them had become such a familiar little happiness in my everyday life.</p>
+          <p>I never imagined that these would be the last pictures and video you would share with me before things between us began to change. Back then, I had no reason to think of them as anything different from all the other pictures you had sent me. I simply saved them, watched them and treasured them, just as I always did.</p>
+          <p>But looking back now, they mean so much more. I can no longer think of them as just a few photographs and a video. They are among the last little glimpses of you that I received while we were still sharing those ordinary parts of our lives. And perhaps that's why I hold on to them so dearly. I didn't know they were going to become such precious memories when you sent them.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-holi-reflection" data-scene="40" aria-label="The Holi I Wish I Had Handled Differently">
+      <div class="new-memory-stage holi-reflection-stage">
+        <header class="new-memory-heading">
+          <h2 class="new-memory-title">The Holi I Wish I Had Handled Differently</h2>
+          <p class="new-memory-date">4 MARCH 2026 · HOLI</p>
+        </header>
+        <div class="new-memory-copy holi-reflection-copy" aria-label="What happened on Holi">
+          <p>On March 4, during Holi, you came to put colours on me. I had just finished taking a bath, so I stopped you without realising how much it would hurt your feelings.</p>
+          <p>As you were leaving, you had a minor accident with your scooty. It happened slowly, and thankfully, you weren't injured or thrown off the vehicle. At first, I didn't even notice what had happened. By the time I realised, from nowhere your father arrived.</p>
+          <p>I thought going there would only make the situation more awkward, so I stayed away. But my decision to stay away hurt you even more. After that day, you didn't message me for several days.</p>
+          <p>I never intended to hurt you that day, but I understand that my actions did. At the time, I didn't realise how much that one day would affect the days that followed.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-waiting-days" data-scene="41" aria-label="The Days I Kept Waiting for Your Message">
+      <div class="new-memory-stage waiting-days-stage">
+        <header class="new-memory-heading">
+          <h2 class="new-memory-title">The Days I Kept Waiting for Your Message</h2>
+        </header>
+        <div class="new-memory-copy waiting-days-copy" aria-label="My attempts to contact you and the days of waiting">
+        <figure class="waiting-days-screenshot-frame">
+          <img class="waiting-days-screenshot" data-src="assets/memories/waiting-days-whatsapp-screenshot.png" alt="WhatsApp conversation from March 4 to March 7, 2026" decoding="async">
+        </figure>
+          <p>Immediately after the incident, I rushed home and tried calling and messaging you, but there was no reply. I messaged you again that night, around the time we usually talked, but still heard nothing.</p>
+          <p>The next day, I asked one of my friends to message you and check if everything was okay. You replied that everything was fine. I also sent you an apology in case I had done anything wrong, but there was no response. The following day, I asked another friend to contact you, but you didn't reply immediately. That night, you removed your profile picture. Later, you replied to my friend and said you would message me.</p>
+          <p>The next morning, your message woke me up. You said you had something important to tell me. We agreed to talk later, but your message never came. Later, you explained that you hadn't messaged because I had an examination the next day. But by then, I was already so worried and distracted that my preparation had suffered, and my exam went badly.</p>
+          <p>Even after the exam, there was no message. That day, you also hid your last seen from me. The next night, I contacted the friend who had accompanied us to Tufanganj and learned that your grandfather had passed away the previous day. A little later, your message finally arrived.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-breakup-day" data-scene="42" aria-label="The Day We Said Goodbye">
+      <div class="new-memory-stage breakup-day-stage">
+        <header class="new-memory-heading">
+          <h2 class="new-memory-title">The Day We Said Goodbye</h2>
+          <p class="new-memory-date">9 MARCH 2026</p>
+        </header>
+        <div class="new-memory-copy breakup-day-copy" aria-label="The conversation that ended our relationship">
+        <div class="breakup-video-shell" aria-label="WhatsApp conversation from March 9, 2026">
+          <video class="breakup-conversation-video" controls playsinline muted preload="none" aria-label="WhatsApp breakup conversation recording">
+            <source src="assets/memories/march9-breakup-conversation.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+          </video>
+        </div>
+          <p>After five days of silence, you finally contacted me and told me that you wanted to end our relationship.</p>
+          <p>You explained that our families were different, our marriage was uncertain and you weren't willing to face that uncertainty. You also said that I didn't respect your parents, something I believed was completely untrue. You felt you couldn't fulfil my expectations, although I had never felt that way. I did have expectations, including physical ones, but I would never want you to go beyond your comfort or against your wishes. Your happiness and decisions always mattered more to me.</p>
+          <p>You also brought up something I had said in the past — that if you didn't become successful, our future together would be difficult. I had said it only to motivate you to study harder, never intending to make you feel that our future depended on your success. But you had understood those words differently, and they had hurt you deeply.</p>
+          <p>You told me that you wanted to remain single after the breakup.</p>
+          <p>Before our conversation ended, I made one final request: I asked you not to block me. I didn't want to lose the possibility of contacting you completely. You agreed.</p>
+          <p>And just like that, after five years, three months and twelve days together, our relationship came to an end. A future I had imagined for so long was no longer something we would share.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-after-breakup-hope" data-scene="43" aria-label="The Hope I Couldn't Let Go Of">
+      <div class="new-memory-stage after-breakup-hope-stage">
+        <header class="new-memory-heading">
+          <h2 class="new-memory-title">The Hope I Couldn't Let Go Of</h2>
+        </header>
+        <div class="new-memory-copy after-breakup-hope-copy">
+          <p>Even after March 9, I wasn't ready to accept that our story had ended. I still believed you loved me, and I kept hoping that someday we might find our way back to each other. You had said that you wanted to remain single, but you had never asked me to wait or promised that we would be together again. Still, I held on to that hope.</p>
+          <p>When we ended things, I asked you not to block me. I wanted to believe that someday we could still talk. But on March 26, you blocked me. That hurt not only because it closed one way to reach you, but because the one last request I had made during our separation had not been kept.</p>
+          <p>I had imagined contacting you after my NEET examination. I even hoped you would wish me luck before the exam. It might have seemed like a small thing, but to me, it would have meant that despite everything, you still remembered me and cared about what happened in my life.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-another-chance" data-scene="44" aria-label="Between Disappointment and Hope">
+      <div class="new-memory-stage another-chance-stage">
+        <header class="new-memory-heading">
+          <h2 class="new-memory-title">Between Disappointment and Hope</h2>
+        </header>
+        <div class="new-memory-copy another-chance-copy">
+          <p>On May 3, I appeared for NEET. My preparation had suffered, and the examination did not go well. I felt disappointed and felt that I had let my family down. I cannot say that the relationship was the only reason; my own preparation, decisions and circumstances also played their part. But emotionally, I was not in a good place.</p>
+          <p>After NEET, I shifted my attention towards my other examinations. My first examination went well, and for a little while, I felt that I could still regain control of my life.</p>
+          <p>Then NEET was cancelled. That brought another opportunity through Re-NEET. At first, it felt like a second chance—a chance to correct what had gone wrong. I gradually started preparing again. My concentration was improving, and I was slowly regaining the rhythm I had lost.</p>
+          <p>I was beginning to move forward, even though I still had unanswered questions about you and our relationship. More importantly, I was still carrying the hope that we might eventually be together again.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-what-i-came-to-know" data-scene="45" aria-label="What I Came to Know">
+      <div class="new-memory-stage what-i-came-to-know-stage">
+        <header class="new-memory-heading">
+          <h2 class="new-memory-title">What I Came to Know</h2>
+        </header>
+        <div class="new-memory-copy what-i-came-to-know-copy">
+          <p>On June 1, I learned from someone else that you were in a relationship with someone. Hearing that left me with so many questions. I wanted to hear the truth from you, so I decided to contact you. Since you had already blocked my usual number, I messaged you using another number that you hadn't blocked and our conversation goes like:</p>
+        </div>
+        <div class="what-chat-feed" id="whatChatFeed" role="log" aria-live="off" aria-label="June 1 WhatsApp conversation">
+          <div class="what-chat-row outgoing" data-chat-message>
+            <div class="what-chat-bubble">Loyally answer dibu......tor mote love mane ki</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:14">01/06/26, 1:14 pm</time>
+          </div>
+          <div class="what-chat-row incoming" data-chat-message>
+            <div class="what-chat-bubble">Love r attraction 2 ta alda... Love jdi hoi taile konodin seita kome na but attraction hoile seta kome</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:15">01/06/26, 1:15 pm</time>
+          </div>
+          <div class="what-chat-row outgoing" data-chat-message>
+            <div class="what-chat-bubble">Mor sathe ki aslo</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:15">01/06/26, 1:15 pm</time>
+          </div>
+          <div class="what-chat-row incoming" data-chat-message>
+            <div class="what-chat-bubble">Mui bohut vabsong... Mor mote oita attraction asil</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:16">01/06/26, 1:16 pm</time>
+          </div>
+          <div class="what-chat-row outgoing" data-chat-message>
+            <div class="what-chat-bubble">Ala love ot asis</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:17">01/06/26, 1:17 pm</time>
+          </div>
+          <div class="what-chat-row incoming" data-chat-message>
+            <div class="what-chat-bubble">Hm</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:17">01/06/26, 1:17 pm</time>
+          </div>
+          <div class="what-chat-row outgoing" data-chat-message>
+            <div class="what-chat-bubble">Tui ki amra relationship ot thakar time ote natun relation ot asisis</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:17">01/06/26, 1:17 pm</time>
+          </div>
+          <div class="what-chat-row incoming" data-chat-message>
+            <div class="what-chat-bubble">Naa</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:17">01/06/26, 1:17 pm</time>
+          </div>
+          <div class="what-chat-row incoming" data-chat-message>
+            <div class="what-chat-bubble">Amar breakup hoya r pore a</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:17">01/06/26, 1:17 pm</time>
+          </div>
+          <div class="what-chat-row outgoing" data-chat-message>
+            <div class="what-chat-bubble">Tui mok breakup korar time ot kosilu "Mui akhle thakir chang"</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:18">01/06/26, 1:18 pm</time>
+          </div>
+          <div class="what-chat-row incoming" data-chat-message>
+            <div class="what-chat-bubble">Hmm oita mui vabong j mui akhale a thakim</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:18">01/06/26, 1:18 pm</time>
+          </div>
+          <div class="what-chat-row incoming" data-chat-message>
+            <div class="what-chat-bubble">Sochay mui oi vabi a breakup krsong</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:18">01/06/26, 1:18 pm</time>
+          </div>
+          <div class="what-chat-row incoming" data-chat-message>
+            <div class="what-chat-bubble">But poree kemun kri hoia gail mui nijeo kobar pang na</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:18">01/06/26, 1:18 pm</time>
+          </div>
+          <div class="what-chat-row outgoing" data-chat-message>
+            <div class="what-chat-bubble">Thle mane tui mor sathe eto din khli time pass korsis</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:18">01/06/26, 1:18 pm</time>
+          </div>
+          <div class="what-chat-row incoming" data-chat-message>
+            <div class="what-chat-bubble">Are time pass na dekh mui agoto koisong tk.. j mor intrest love thki komi jaiya aseee</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:19">01/06/26, 1:19 pm</time>
+          </div>
+          <div class="what-chat-row incoming" data-chat-message>
+            <div class="what-chat-bubble">Bohut din mor realise hoise j actually ki hoia ase kintu....mui tok indirectly koisong ...  Directly kobar pang nai</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:19">01/06/26, 1:19 pm</time>
+          </div>
+          <div class="what-chat-row incoming" data-chat-message>
+            <div class="what-chat-bubble">R janong mui tor sathe thik krong nai</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:19">01/06/26, 1:19 pm</time>
+          </div>
+          <div class="what-chat-row incoming" data-chat-message>
+            <div class="what-chat-bubble">Sorry tr jnne .. mor thki tui better pabu</div>
+            <time class="what-chat-time" datetime="2026-06-01T13:20">01/06/26, 1:20 pm</time>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-things-i-didnt-know" data-scene="46" aria-label="The Things I Didn't Know About">
+      <div class="things-stage" id="thingsStage">
+        <header class="things-heading">
+          <h2 class="things-title">The Things I Didn't Know About</h2>
+          <p class="things-intro">Our conversation on June 1 revealed a series of events from the final months of our relationship that I had never known about.</p>
+        </header>
+        <div class="things-timeline-grid" aria-label="Events revealed during the June 1 conversation"><span class="things-mobile-track" aria-hidden="true"></span>
+          <div class="things-timeline-column things-timeline-left" aria-label="Earlier events"><span class="things-timeline-track" aria-hidden="true"></span>
+            <article class="things-event">
+              <div class="things-event-card">
+                <p class="things-event-date">December 2025</p>
+                <h3>The First Connection</h3>
+                <p>He followed you on Instagram. You told me that he might have feelings for you, so I asked you to let me know if he ever contacted you.</p>
+              </div>
+            </article>
+            <article class="things-event">
+              <div class="things-event-card">
+                <p class="things-event-date">February 24, 2026</p>
+                <h3>The First Message</h3>
+                <p>He messaged you, and you replied. You did not inform me about it.</p>
+              </div>
+            </article>
+            <article class="things-event">
+              <div class="things-event-card">
+                <p class="things-event-date">February 26, 2026</p>
+                <h3>His Confession</h3>
+                <p>Two days later, he confessed his feelings and proposed to you. I still knew nothing about any of this.</p>
+              </div>
+            </article>
+            <article class="things-event">
+              <div class="things-event-card">
+                <p class="things-event-date">February 27–28, 2026</p>
+                <h3>The Mock Test</h3>
+                <p>We did not communicate during these two days because I was preparing for my mock test on March 1.</p>
+              </div>
+            </article>
+          </div>
+          <div class="things-timeline-column things-timeline-right" aria-label="The events that followed"><span class="things-timeline-track" aria-hidden="true"></span>
+            <article class="things-event">
+              <div class="things-event-card">
+                <p class="things-event-date">March 4, 2026</p>
+                <h3>Holi</h3>
+                <p>The Holi incident took place. You later told me that you had considered deleting Instagram and stop communicating with him, but neither happened.</p>
+              </div>
+            </article>
+            <article class="things-event">
+              <div class="things-event-card">
+                <p class="things-event-date">March 9, 2026</p>
+                <h3>The End of Our Relationship</h3>
+                <p>After five years, three months and twelve days of togetherness, we ended our relationship.</p>
+              </div>
+            </article>
+            <article class="things-event">
+              <div class="things-event-card">
+                <p class="things-event-date">March 24, 2026</p>
+                <h3>Fifteen Days Later</h3>
+                <p>Just fifteen days after our relationship ended, you began a new relationship with the same person who had first messaged you on February 24.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="things-narration" aria-label="Looking back at the conversations we had">
+          <p>Looking back at these dates, we had spoken on February 24–26 and again from March 1–3, yet you never told me about his messages or confession. Later, you said you had forgotten to tell me and explained that my mock test was why we hadn't talked, although that only accounted for February 27–28.</p>
+          <p>You had also considered deleting Instagram and stopping communication with him, but neither happened after Holi. Instead, your communication continued and perhaps this was how your feelings for him had begun to grow and you finally came in to relationship just fifteen days after our breakup.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-exam-results" data-scene="47" aria-label="What Followed After June 1">
+      <div class="exam-results-stage" id="examResultsStage">
+        <header class="exam-results-heading">
+          <h2 class="exam-results-title">What Followed After June 1</h2>
+        </header>
+
+        <div class="exam-results-scroll" id="examResultsScroll">
+          <div class="exam-results-copy" aria-label="What happened to my preparation">
+          <p>After June 1, my concentration suffered again. I had been slowly rebuilding my preparation for Re-NEET, but the things I learned that day brought back the emotional confusion I had been trying to overcome.</p>
+          <p>Despite everything, I continued trying. Alongside Re-NEET, I also appeared for CUET, NEST and IAT, hoping that perhaps another opportunity would work out.</p>
+        </div>
+
+        <div class="exam-results-grid" id="examResultsGrid" aria-label="Examination results">
+          <article class="exam-result-card">
+            <h3>CUET</h3>
+            <p>It did not go as well as I had expected.</p>
+          </article>
+          <article class="exam-result-card">
+            <h3>NEST</h3>
+            <p>I could not qualify.</p>
+          </article>
+          <article class="exam-result-card">
+            <h3>IAT</h3>
+            <p>I missed getting a seat by just two questions.</p>
+          </article>
+          <article class="exam-result-card">
+            <h3>Re-NEET</h3>
+            <p>I missed my target by a small margin.</p>
+          </article>
+        </div>
+
+          <div class="exam-results-closing" aria-label="Looking back at the examination results">
+            <p>I cannot honestly attribute these results entirely to what happened in my personal life. My preparation and performance were my responsibility, too. But I also cannot pretend that the revelation had no effect on me. It affected my state of mind at a time when I was trying to recover and prepare for examinations that mattered deeply to me.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="scene scene-final-chapters" data-scene="48" aria-label="The Things I Couldn't Tell You">
+      <div class="scene51-stage" id="scene51Stage">
+        <div class="scene51-copy scene51-opening" aria-label="What followed after June 1">
+          <p>After June 1, I found myself struggling with a reality I couldn't understand. I kept looking for you, checking your social media, saving your photographs whenever I came across them, and trying to find answers through our mutual friends.</p>
+        </div>
+
+        <div class="scene51-photo-row" id="scene51PhotoRow" aria-label="Four photographs">
+          <figure class="scene51-photo"><img data-src="assets/memories/scene-51-photo-01.jpeg" alt="Photograph in a cream sari with a red blouse, standing in a doorway" decoding="async"></figure>
+          <figure class="scene51-photo"><img data-src="assets/memories/scene-51-photo-02.jpeg" alt="Close-up portrait in a magenta outfit" decoding="async"></figure>
+          <figure class="scene51-photo"><img data-src="assets/memories/scene-51-photo-03.jpeg" alt="Photograph in a light floral sari beside a garden wall" decoding="async"></figure>
+          <figure class="scene51-photo"><img data-src="assets/memories/scene-51-photo-04.jpeg" alt="Photograph in a dark top and grey trousers among garden flowers" decoding="async"></figure>
+        </div>
+
+        <div class="scene51-copy scene51-middle" aria-label="The words I still wanted to share">
+          <p>Even after everything, I still wanted to tell you about my life. Whenever something happened, even something ordinary, I would instinctively think of sharing it with you.</p>
+          <p>With so many words left unsaid, I began writing poems. I wrote about our memories, the questions I couldn't answer, the things I missed and everything I wished you could understand.</p>
+        </div>
+
+        <a class="scene51-poems-link" id="scene51PoemsLink" href="poems.html">The Poems I Wrote For You <span aria-hidden="true">↗</span></a>
+
+        <div class="scene51-copy scene51-final-copy" aria-label="The conversations that remained unfinished">
+          <p>All those conversations I had imagined, all those little things I wanted to share and all those words I wrote for you remained unfinished conversations between me and myself.</p>
+        </div>
+      </div>
+    </section>
+
+<section id="scene-52" class="scene scene52" data-scene="49">
+    
+      <!-- One responsive artwork canvas keeps the moon and SVG composition together. -->
+      <div class="scene52__artwork">
+        <!-- Moon -->
+        <div class="scene52__moon"></div>
+    
+        <!-- Headstone and bouquet illustration -->
+        <svg class="scene52__art"
+           viewBox="0 0 800 450"
+           preserveAspectRatio="xMidYMid meet"
+           role="img"
+           aria-label="A solitary headstone bearing the inscription SUBHASANDHYA, with a small bouquet of flowers resting at its foot.">
+    
+        <defs>
+          <linearGradient id="s52-ground" x2="0" y2="1">
+            <stop stop-color="#211a2b"/>
+            <stop offset=".5" stop-color="#15111e"/>
+            <stop offset="1" stop-color="#0b0a12"/>
+          </linearGradient>
+    
+          <linearGradient id="s52-stone" x1="0" y1="0" x2="1" y2=".2">
+            <stop stop-color="#777083"/>
+            <stop offset=".34" stop-color="#5a5268"/>
+            <stop offset=".72" stop-color="#484153"/>
+            <stop offset="1" stop-color="#393342"/>
+          </linearGradient>
+    
+          <linearGradient id="s52-side" x1="0" x2="1">
+            <stop stop-color="#383342"/>
+            <stop offset="1" stop-color="#211e2a"/>
+          </linearGradient>
+    
+          <filter id="s52-shadow" x="-50%" y="-100%" width="200%" height="300%">
+            <feGaussianBlur stdDeviation="7"/>
+          </filter>
+        </defs>
+    
+        <!-- Ground -->
+        <path d="M0 365 Q190 352 390 365 T800 360 V450 H0Z"
+              fill="#171321" opacity=".56"/>
+    
+        <rect y="370" width="800" height="80"
+              fill="url(#s52-ground)"/>
+    
+        <path d="M0 370 Q190 357 350 370 T800 365"
+              fill="none" stroke="#75677b" stroke-opacity=".22"/>
+    
+        <!-- Headstone shadow -->
+        <ellipse cx="668" cy="369" rx="77" ry="10"
+                 fill="#05040b" opacity=".8"
+                 filter="url(#s52-shadow)"/>
+    
+        <!-- Headstone -->
+        <g transform="rotate(-2.5 669 368)">
+          <g class="scene52__headstone-mobile-scale">
+    
+          <!-- Stone side -->
+          <path d="M710 233 Q727 236 728 254 L722 365 L709 369 L709 237Z"
+                fill="url(#s52-side)"/>
+    
+          <!-- Main stone surface -->
+          <path d="M615 368
+                   L619 251
+                   Q619 226 640 220
+                   Q667 211 696 221
+                   Q716 227 715 250
+                   L710 368
+                   Q665 377 615 368Z"
+                fill="url(#s52-stone)"
+                stroke="#a397a0"
+                stroke-opacity=".44"
+                stroke-width="1.5"/>
+    
+          <!-- Natural stone highlights -->
+          <path d="M622 250 Q624 228 644 226 Q674 217 697 227"
+                fill="none"
+                stroke="#d4c7d2"
+                stroke-opacity=".26"
+                stroke-width="2"/>
+    
+          <path d="M626 245 Q626 230 646 224"
+                fill="none"
+                stroke="#e0d3db"
+                stroke-opacity=".12"
+                stroke-width="5"
+                stroke-linecap="round"/>
+    
+          <path d="M624 258 L620 354"
+                stroke="#d4c7d2"
+                stroke-opacity=".12"
+                stroke-width="2"/>
+    
+          <path d="M707 252 L704 354"
+                stroke="#171420"
+                stroke-opacity=".24"
+                stroke-width="3"/>
+    
+          <!-- Engraved inscription -->
+          <text x="666" y="301"
+                text-anchor="middle"
+                font-family="Georgia, serif"
+                font-size="10"
+                letter-spacing=".8"
+                fill="#25202d">SUBHASANDHYA</text>
+    
+          <text x="666" y="300"
+                text-anchor="middle"
+                font-family="Georgia, serif"
+                font-size="10"
+                letter-spacing=".8"
+                fill="#aaa0ad"
+                opacity=".19">SUBHASANDHYA</text>
+    
+          <path d="M636 313 Q666 316 696 312"
+                fill="none"
+                stroke="#211c29"
+                stroke-opacity=".55"
+                stroke-width="1"/>
+    
+          <path d="M636 314 Q666 317 696 313"
+                fill="none"
+                stroke="#c9bac9"
+                stroke-opacity=".13"
+                stroke-width="1"/>
+          </g>
+        </g>
+    
+        <!-- Bouquet shadow -->
+        <ellipse cx="656" cy="382" rx="43" ry="6"
+                 fill="#05040b" opacity=".65"
+                 filter="url(#s52-shadow)"/>
+    
+        <!-- Cut-flower bouquet laid at the headstone -->
+        <g class="scene52__bouquet" stroke-linecap="round" stroke-linejoin="round">
+    
+          <!-- Gathered stems -->
+          <path d="M625 362 Q648 367 684 382
+                   M639 351 Q654 363 684 382
+                   M653 354 Q663 366 684 382
+                   M667 362 Q674 373 684 382"
+                fill="none"
+                stroke="#53634f"
+                stroke-width="2.4"/>
+    
+          <!-- Cut stem ends -->
+          <path d="M682 381 L689 385 M681 379 L687 382"
+                stroke="#8a8874"
+                stroke-width="1.2"/>
+    
+          <!-- Leaves -->
+          <path d="M651 369 Q638 359 635 365 Q641 374 651 369Z"
+                fill="#64745c" stroke="#839074" stroke-width=".7"/>
+    
+          <path d="M663 373 Q674 360 679 366 Q676 375 663 373Z"
+                fill="#596a59" stroke="#839074" stroke-width=".7"/>
+    
+          <path d="M643 360 Q635 348 631 354 Q633 362 643 360Z"
+                fill="#68765e" stroke="#89917a" stroke-width=".7"/>
+    
+          <!-- Lavender flower -->
+          <g transform="translate(624 358)">
+            <ellipse cy="-5" rx="3.5" ry="5.2" fill="#c4a9c8"/>
+            <ellipse cx="5" cy="-1.5" rx="3.5" ry="5.2"
+                     transform="rotate(65 5 -1.5)" fill="#ac91b7"/>
+            <ellipse cx="3" cy="4" rx="3.5" ry="5.2"
+                     transform="rotate(140 3 4)" fill="#c6acc8"/>
+            <ellipse cx="-3.5" cy="4" rx="3.5" ry="5.2"
+                     transform="rotate(-140 -3.5 4)" fill="#a991b5"/>
+            <ellipse cx="-5" cy="-1.5" rx="3.5" ry="5.2"
+                     transform="rotate(-65 -5 -1.5)" fill="#c2a4c6"/>
+            <circle r="2" fill="#e1cda2"/>
+          </g>
+    
+          <!-- Ivory flower -->
+          <g transform="translate(642 347) scale(.94)">
+            <ellipse cy="-5" rx="3.5" ry="5.2" fill="#e1d6d5"/>
+            <ellipse cx="5" cy="-1.5" rx="3.5" ry="5.2"
+                     transform="rotate(65 5 -1.5)" fill="#cfc2d1"/>
+            <ellipse cx="3" cy="4" rx="3.5" ry="5.2"
+                     transform="rotate(140 3 4)" fill="#e4d8d8"/>
+            <ellipse cx="-3.5" cy="4" rx="3.5" ry="5.2"
+                     transform="rotate(-140 -3.5 4)" fill="#cfc1d0"/>
+            <ellipse cx="-5" cy="-1.5" rx="3.5" ry="5.2"
+                     transform="rotate(-65 -5 -1.5)" fill="#e2d7d8"/>
+            <circle r="2" fill="#d8bd92"/>
+          </g>
+    
+          <!-- Second lavender flower -->
+          <g transform="translate(655 362) scale(.77)">
+            <ellipse cy="-5" rx="3.5" ry="5.2" fill="#b69bbe"/>
+            <ellipse cx="5" cy="-1.5" rx="3.5" ry="5.2"
+                     transform="rotate(65 5 -1.5)" fill="#9d85af"/>
+            <ellipse cx="3" cy="4" rx="3.5" ry="5.2"
+                     transform="rotate(140 3 4)" fill="#c1a5c4"/>
+            <ellipse cx="-3.5" cy="4" rx="3.5" ry="5.2"
+                     transform="rotate(-140 -3.5 4)" fill="#a28ab3"/>
+            <ellipse cx="-5" cy="-1.5" rx="3.5" ry="5.2"
+                     transform="rotate(-65 -5 -1.5)" fill="#c0a5c6"/>
+            <circle r="2" fill="#dfc99a"/>
+          </g>
+    
+          <!-- Ribbon -->
+          <path d="M672 373 Q666 366 661 372 Q664 379 672 375
+                   Q678 383 683 375 Q680 369 672 373Z"
+                fill="#aa8da9"
+                stroke="#d0b8cc"
+                stroke-width=".8"/>
+    
+          <path d="M672 375 L670 382 M675 376 L680 381"
+                fill="none"
+                stroke="#bd9db9"
+                stroke-width="1"/>
+        </g>
+        </svg>
+      </div>
+    
+      <!-- Narration -->
+      <div class="scene52__content">
+    
+        <h2 class="scene52__title">
+          The Last Resting Place
+        </h2>
+    
+        <!--
+          One continuous narration viewport.
+          Text automatically moves upward as it grows.
+        -->
+        <div class="scene52__viewport"
+             id="scene52-narration-viewport"
+             aria-label="Scene 52 narration">
+    
+          <div class="scene52__text"
+               id="scene52-narration-text"
+               aria-live="off">
+            <div class="scene52__grave-flow-shape" aria-hidden="true"></div>
+            <p>Six years ago, I could never have imagined that a story I wished would last a lifetime would bring me to a place like this.</p>
+            <p>There was a time when every road ahead seemed to lead towards you. I had tucked away a thousand little dreams for us, imagined countless futures and held on to a forever whose end I never thought I would have to witness.</p>
+            <p>But now, beneath this silent sky, I have come to lay our SUBHASANDHYA to rest.</p>
+            <p>Here, I leave the forever we dreamed of, the promises that never found their fulfilment, the countless futures that remained unwritten and the last fragile hope that perhaps time might someday find its way back to us.</p>
+            <p>I wish I could leave without looking back. I wish the heart could understand what the hands are finally learning to do: let go of something they spent so long holding close.</p>
+            <p>So, these flowers are all I have left to offer. Let them rest beside what once meant the world to me.</p>
+            <p>Rest now, my once-upon-a-forever. You need not wait for another beginning.</p>
+            <p>I shall carry the memories of what we were, but I will leave the dream of what we could have been beneath this stone.</p>
+            <p class="scene52__final">And when I walk away, there will be no more waiting for us to find our way back.</p>
+          </div>
+    
+        </div>
+    
+      </div>
+    </section>
+
+<section id="scene-53" class="scene scene53" data-scene="50" aria-label="The Final Wish">
+      <div class="scene53-stage" id="scene53Stage">
+        <header class="scene53-date scene53-opening-date" aria-label="11th November, 2020. My first message to you">
+          <p class="scene53-date-main">11th November, 2020</p>
+          <p class="scene53-date-subtitle">My first message to you</p>
+        </header>
+
+        <div class="scene53-narration" id="scene53Narration" aria-label="The final birthday wish">
+          <p>Some dates are not merely numbers on a calendar; they are little doors that time leaves open for memories.</p>
+          <p>Six years ago, this very date opened one for us. Today, I return to it with no wishes for yesterday, only a prayer for all your tomorrows.</p>
+          <p>And after this, I shall not write to you again. No more messages, no more attempts to cross the distance between us. I simply wanted to close this circle where it began, with the same thing my first words to you carried — a birthday wish.</p>
+          <p>May good health walk beside you through every season of life, and may the seeds of every effort you have sown blossom into the success your heart has long dreamed of. Let the dreams you have kept folded in the quietest corners of your heart find their wings, and let life take you to places more beautiful than your imagination has ever wandered. May the world be generous with its opportunities, the years gentle with your spirit and the road ahead filled with discoveries worth remembering.</p>
+          <p>But above all, I hope happiness finds a permanent home within you. Not merely in the grand victories or the fulfilment of distant dreams, but in the smallest of things—in unguarded laughter, in peaceful moments, in people who make your heart feel at ease and in the quiet belief that, whatever life may bring, there will always be beauty waiting to be found.</p>
+          <p class="scene53-birthday">Happy Birthday.</p>
+        </div>
+
+        <footer class="scene53-date scene53-closing-date" id="scene53ClosingDate" aria-label="11th November, 2026. My last message to you">
+          <p class="scene53-date-main">11th November, 2026</p>
+          <p class="scene53-date-subtitle">My last message to you</p>
+        </footer>
+      </div>
+    </section>
+
+    <nav class="transport-controls" id="transportControls" aria-label="Story controls" aria-hidden="true">
+      <button class="transport-button" id="previousButton" type="button" aria-label="Restart current scene; click again for previous scene">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 6l-10 6 10 6V6Z"/></svg>
+      </button>
+      <button class="transport-button transport-main" id="playButton" type="button" aria-label="Resume">
+        <svg class="play-symbol" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z"/></svg>
+        <svg class="pause-symbol" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+      </button>
+      <button class="transport-button" id="nextButton" type="button" aria-label="Complete current scene; click again for next scene">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 6l10 6-10 6V6Z"/></svg>
+      </button>
+    </nav>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
