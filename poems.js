@@ -41,22 +41,19 @@
     link.addEventListener('click', event => {
       if (!window.opener || window.opener.closed) return;
       const targetUrl = new URL(link.href, window.location.href);
-      const serializedState = targetUrl.searchParams.get('storyReturn') || storyReturnState;
-      if (!serializedState) return;
+      const hasReturnMarker = targetUrl.searchParams.has('storyReturn') || Boolean(storyReturnState);
+      if (!hasReturnMarker) return;
       try {
         const openerOrigin = window.opener.location.origin;
         if (openerOrigin !== window.location.origin) return;
-        const savedState = JSON.parse(serializedState);
-        const targetOrigin = window.location.origin === 'null' ? '*' : window.location.origin;
+        // The opener already owns the full snapshot in memory/sessionStorage.
+        // Send only a small request; never echo the snapshot through a URL/message.
         window.opener.focus();
-        window.opener.postMessage({
-          type: 'birthday-story:return-to-opener',
-          state: savedState
-        }, targetOrigin);
+        window.opener.postMessage({ type: 'birthday-story:return-to-opener' }, window.location.origin);
         event.preventDefault();
         window.close();
       } catch (error) {
-        // A cross-origin or opener-isolated tab falls back to the return URL.
+        // A cross-origin or opener-isolated tab falls back to the short return URL.
         console.info('The original story tab is unavailable; using the return link.', error);
       }
     });
