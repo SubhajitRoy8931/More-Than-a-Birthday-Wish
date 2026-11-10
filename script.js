@@ -2202,11 +2202,15 @@
   );
 
   // On mobile, narration begins at full width below the title, then wraps
-  // beside the stationary grave from the headstone's top down to the
-  // ground-safe viewport edge. The sticky float keeps that exclusion aligned
-  // during scrolling without per-frame SVG measurements or text reflow.
+  // beside the stationary grave from the headstone's top to the ground-safe
+  // viewport edge. As the text scrolls, the float's document-space top follows
+  // scrollTop so its screen-space position remains aligned with the grave.
   let scene52GraveFlowFrame = null;
   let scene52FlowHasMeasured = false;
+  let scene52GraveFlowIsMobile = false;
+  let scene52GraveFlowTopOffset = 0;
+  let scene52GraveFlowBaseHeight = 0;
+  let scene52GraveFlowScrollFrame = null;
   let scene52ScrollTimer = null;
   let scene52ScrollTarget = null;
   function syncScene52GraveFlowHeight() {
@@ -2220,6 +2224,9 @@
       ['position', 'top', 'height', 'width', 'margin', 'shape-outside', 'shape-margin']
         .forEach(property => graveFlow.style.removeProperty(property));
       scene52Viewport.style.removeProperty('top');
+      scene52GraveFlowIsMobile = false;
+      scene52GraveFlowTopOffset = 0;
+      scene52GraveFlowBaseHeight = 0;
       scene52FlowHasMeasured = true;
       return;
     }
@@ -2253,6 +2260,13 @@
       graveTopOffset + 1,
       lowerEdge - viewportRect.top
     );
+    // Cache the visible grave-to-ground region. During scrolling, move the
+    // float's document-space origin by scrollTop while keeping this height
+    // fixed. This makes its visible top and bottom track the stationary grave
+    // and ground boundary instead of letting later paragraphs flow underneath.
+    scene52GraveFlowTopOffset = graveTopOffset;
+    scene52GraveFlowBaseHeight = graveBottomOffset - graveTopOffset;
+    scene52GraveFlowIsMobile = true;
     const exclusionLeft = Math.max(textRect.left, graveLeft - 6);
     const exclusionRight = Math.min(textRect.right, graveRight + 6);
     const exclusionWidth = Math.max(1, exclusionRight - exclusionLeft);
@@ -2266,13 +2280,18 @@
       Math.min(100, ((textRect.right - exclusionRight) / floatWidth) * 100)
     );
 
-    // Apply the stationary float once. Later scroll frames only move the
-    // scroll container; the sticky shape itself stays aligned with the grave.
-    graveFlow.style.position = 'sticky';
-    graveFlow.style.top = `${graveTopOffset}px`;
+    // Apply the measured float once. Later scroll frames only update its
+    // document-space top margin; no artwork geometry is remeasured.
+    // Keep the float in normal flow. Its top margin is advanced by scrollTop
+    // so its on-screen position remains aligned with the stationary headstone.
+    // Sticky positioning only pins the painted box; it does not move the float
+    // exclusion area used for subsequent line layout, which caused text to
+    // become full-width beneath the grave after the first viewport was passed.
+    graveFlow.style.position = 'static';
+    graveFlow.style.removeProperty('top');
     graveFlow.style.width = `${floatWidthPercent}%`;
-    graveFlow.style.height = `${Math.max(1, graveBottomOffset - graveTopOffset)}px`;
-    graveFlow.style.margin = `${graveTopOffset}px 0 0 0`;
+    graveFlow.style.height = `${Math.max(1, scene52GraveFlowBaseHeight)}px`;
+    graveFlow.style.margin = `${scene52GraveFlowTopOffset + scene52Viewport.scrollTop}px 0 0 0`;
     graveFlow.style.shapeMargin = isMobileLandscape ? '6px' : '7px';
     graveFlow.style.shapeOutside = isMobileLandscape
       ? `inset(0px ${shapeRightInsetPercent}% 0px 0px round 22px 22px 0 0)`
@@ -2287,6 +2306,21 @@
       syncScene52GraveFlowHeight();
     });
   }
+
+  // Scroll-only update: do not remeasure the SVG. Move the float's normal-flow
+  // origin down by exactly the scroll distance, keeping its visible top aligned
+  // with the stationary headstone. Its height remains the grave-to-ground
+  // viewport distance, so text wraps left only beside the grave and never
+  // reflows full-width below it as later narration scrolls into view.
+  scene52Viewport.addEventListener('scroll', () => {
+    if (!scene52GraveFlowIsMobile || !scene52FlowHasMeasured || scene52GraveFlowScrollFrame !== null) return;
+    scene52GraveFlowScrollFrame = window.requestAnimationFrame(() => {
+      scene52GraveFlowScrollFrame = null;
+      const graveFlow = scene52Root.querySelector('.scene52__grave-flow-shape');
+      if (!graveFlow || !scene52GraveFlowIsMobile) return;
+      graveFlow.style.marginTop = `${scene52GraveFlowTopOffset + scene52Viewport.scrollTop}px`;
+    });
+  }, { passive: true });
 
   requestScene52GraveFlowSync();
   window.addEventListener('resize', () => {
