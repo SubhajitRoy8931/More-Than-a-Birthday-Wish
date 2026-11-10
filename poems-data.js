@@ -4,7 +4,7 @@ window.POEM_COLLECTION = {
       "title": "Let You Know",
       "occasion": "My Confession · 24 November 2020",
       "stanzas": [
-        "Do you know I am afraid of you?\nI am afraid to talk to you\nI am afraid when you come to me\nI am afraid to lose you\nI am afraid to ask you\nWould you love me?",
+        "Do you know I am afraid of you?\nI am afraid to talk to you\nI am afraid when you come to me\nI am afraid to lose you\nI am afraid to ask you Would you love me?",
         "But today I have made my mindset\nTo let you know everything I feel for you\nYou asked me once what your dreams are\nI answered something that’s just a few\nMy dreams will only fulfil\nWhen I will make you mine.",
         "The day I see you first\nWas the day I fall in love with you\nThe charm that you have\nHave made me deaf, dumb and blind\nFrom the dusk to dawn, from day to night\nYou are always in my heart as well as my mind.",
         "The way you smile, the way you blink your eyes\nThe perfect way is to martyr me in love\nWhenever you talk to me\nMy heart starts beating faster,\nWhenever I see you in front of my eyes\nMy heart automatically flies.",
@@ -98,8 +98,7 @@ window.POEM_COLLECTION = {
       "title": "Dariya ki Dastaan",
       "occasion": "5th Anniversary · 25 November 2025",
       "stanzas": [
-        "Sannate ki ghaati mein soyi thi srot ki adhuri dhadkan,\nUthi lehron me aasha, nile khwaab ka paigaam liye,\nBechain si ek leher thi, jise hawaaon ne cheeda\nHosh me aayi dhaar, jab dhoop ne uska naam liya,\nAarzoo bahi, zameen ne raah di, aur dhara nadi bani.",
-        "Sargam si utri lehron mein, jab nadi ne pehla geet gaya,\nApne keechar ko bhi aaghosh me lekar dariya behta gaya,\nNarm lehro ki panah ne, kinnaro ko naya rang diya,\nDard pikar dhaar ka, dariya aur gehra ho gaya\nHazaron meel behkar bhi, nadi ne raah na bhulai.\nYugon se behta aaya ye dariya jaise ho tapasvi ka tap\nAntatah samundar se milkar, amar ye dastaan bani."
+        "Sannate ki ghaati mein soyi thi srot ki adhuri dhadkan,\nUthi lehron me aasha, nile khwaab ka paigaam liye,\nBechain si ek leher thi, jise hawaaon ne cheeda\nHosh me aayi dhaar, jab dhoop ne uska naam liya,\nAarzoo bahi, zameen ne raah di, aur dhara nadi bani.\nSargam si utri lehron mein, jab nadi ne pehla geet gaya,\nApne keechar ko bhi aaghosh me lekar dariya behta gaya,\nNarm lehro ki panah ne, kinnaro ko naya rang diya,\nDard pikar dhaar ka, dariya aur gehra ho gaya\nHazaron meel behkar bhi, nadi ne raah na bhulai.\nYugon se behta aaya ye dariya jaise ho tapasvi ka tap\nAntatah samundar se milkar, amar ye dastaan bani."
       ]
     }
   ],
@@ -140,7 +139,7 @@ window.POEM_COLLECTION = {
       ]
     },
     {
-      "title": "Qasmon Ki Saudagar",
+      "title": "Tumhare Har Waade Ka Bazaar Nikla",
       "occasion": "June 2026",
       "stanzas": [
         "Tum qasmon ki saudagar nikli,\nHar waada tumhara bazaar nikla.",
@@ -149,9 +148,7 @@ window.POEM_COLLECTION = {
         "Jis shaam ko maine apna aasman maana,\nWoh meri raaton ka adhura khwaab nikla.",
         "Main tumhe manzil samajh kar thehar gaya,\nMagar tumhara safar kahin aur nikla.",
         "Phir ek lamhe mein manzar yun badla,\nTum noor mein dhal gayi, mujhe andhera de gayi.",
-        "Ab jab bhi un waadon ka zikr hota hai,\nMera dil bas itna kehta hai—",
-        "Ye alfaaz paida nahi hue,\nMere qatl hue khwaabon ki raakh se nikle hain.",
-        "Ye uss khoon-e-qasam ki taasir hai,\nJo har sher mein apni gawaahi de rahi hai."
+        "Ab jab bhi un waadon ka zikr hota hai,\nMera dil bas itna kehta hai—\n\nYe alfaaz paida nahi hue,\nMere qatl hue khwaabon ki raakh se nikle hain.\n\nYe uss khoon-e-qasam ki taasir hai,\nJo har sher mein apni gawaahi de rahi hai."
       ]
     },
     {
@@ -159,14 +156,14 @@ window.POEM_COLLECTION = {
       "occasion": "June 2026",
       "stanzas": [
         "Even if every \"I love you forever\"\nWas only a passing breeze,\nThank you for letting my heart\nBelieve it had found a home.",
-        "Thank you\nFor the laughter you left behind,\nOr the quiet moments\nThat still echo inside me,\nFor every memory\nThat now hurts to hold.",
+        "Thank you\nFor the laughter you left behind,\nGor the quiet moments\nThat still echo inside me,\nFor every memory\nThat now hurts to hold.",
         "Maybe your forever\nWas never meant to last.\nMaybe your promises\nWere only words looking for a place to rest.\nMaybe you never loved me,\nMaybe I was loving enough for both of us.",
         "Still...",
         "Thank you\nFor saying you would stay\nThrough every storm I had yet to face.\nFor saying you would wait for me\nWhile I chased the dreams\nThat always seemed just beyond my reach.",
-        "You may have forgotten those words\nThe moment they left your lips,\nBut I carried them\nLike prayers whispered into the dark.",
-        "If it was all an illusion,\nIt was a beautiful one.\nFor a little while,\nI knew what it felt like\nTo believe I was someone's choice,\nSomeone's peace,\nSomeone worth waiting for.",
+        "You may have forgotten those words\nthe moment they left your lips,\nbut I carried them\nlike prayers whispered into the dark.",
+        "If it was all an illusion,\nit was a beautiful one.\nFor a little while,\nI knew what it felt like\nto believe I was someone's choice,\nsomeone's peace,\nsomeone worth waiting for.",
         "And if none of it was real,\nthen let this be the only truth that remains—",
-        "Thank you.\nFor loving me,\nEven if only in a way\nThat could never stay."
+        "Thank you.\nFor loving me,\neven if only in a way\nthat could never stay."
       ]
     },
     {
@@ -225,8 +222,7 @@ window.POEM_COLLECTION = {
       "stanzas": [
         "Kabhi laga tha,\nWaqt ne tumhe badal diya hai.\n\nKal tak tum kisi rishte mein\nEk mausam se zyada na thehar saki,\nShayad mere saath tumne\nTheharna seekh liya tha.",
         "Maine tumhari khamoshiyon ko yaqeen samjha,\nTumhare vaadon ko umr,\nAur dooriyon ko sirf ek imtihaan.\n\nSaalo tak ek hi aasmani chiragh ke neeche\nMain tum par aitbaar karta raha,\nYeh maan kar\nKi kuch log sach mein badal jaate hain.",
-        "Phir ek din samajh aaya\nTum badli hi nahi thi,\nBas bazaar mein\nMujhse behtar khareedaar nahi mila tha.",
-        "Aur tab jaana,\nMain jise mohabbat samajh kar\nApni poori zindagi ka sauda samajhta raha,\nWoh aur kuch nahi\nBas qasmon ka ek sauda tha."
+        "Phir ek din samajh aaya\nTum badli hi nahi thi,\nBas bazaar mein\nMujhse behtar khareedaar nahi mila tha.\n\nAur tab jaana,\nMain jise mohabbat samajh kar\nApni poori zindagi ka sauda samajhta raha,\nWoh aur kuch nahi\nBas qasmon ka ek sauda tha."
       ]
     },
     {
@@ -234,9 +230,9 @@ window.POEM_COLLECTION = {
       "occasion": "September 2026",
       "stanzas": [
         "I hate you\nFor the wounds you left,\nFor the silence after your goodbye,\nFor the memories\nThat can still ruin my mood.",
-        "And yet\nI miss you,\nI miss our late night conversations,\nThe foolish little things\nThat meant nothing to the world\nBut somehow meant everything to me.",
-        "Isn't it strange\nHow someone can become a wound\nAnd still feel like home?",
-        "Maybe I'm not angry at you anymore,\nMaybe I'm angry at the memory\nFor keeping the sunsets\nAnd forgetting the storms.",
+        "And yet\nI miss you,\nI miss our late night conversations,\nThe foolish little things\nThat meant nothing to the world\nBut somehow meant everything to\nme.",
+        "Isn't it strange\nHow someone can become a\nwound\nAnd still feel like home?",
+        "Maybe I'm not angry at you\nanymore,\nMaybe I'm angry at the memory\nFor keeping the sunsets\nAnd forgetting the storms.",
         "Because the truth is,\nI don't want you back.",
         "Actually, I miss what we were,\nI miss who I was,\nWhen loving you still felt safe.\nMaybe I can keep the memories\nWithout reopening the door,\nMaybe I can wish you happiness\nWithout wishing you beside me.",
         "Because sometimes\nYou don't miss the person\nYou miss the time,\nThe feeling,\nThe version of yourself\nThat existed with them.",
@@ -282,11 +278,11 @@ window.POEM_COLLECTION = {
         "Ab guzre din yaad aate hain toh dil bas yahi poochhta hai,\nKya paanch saal ka rishta pandrah din mein peeche chhoot sakta hai?",
         "Aaj bhi jawaab nahi hai bas yaadon ka silsila hai,\nTu meri kahaani ka sach thi ya sirf mera bharam tha?"
       ]
-    }
+    },
     {
-      "id": "aakhri-phool",
       "title": "Aakhri Phool",
       "occasion": "My Last Birthday Wish · 11 November 2026",
+      "dedicatedPage": "aakhri-phool.html",
       "stanzas": [
         "Tere liye jo aag jalayi thi, aaj usi ki raakh se apna anjaam likh raha hoon,\nJis mohabbat ko umr bhar jeena tha, aaj usi ka aakhri paigaam likh raha hoon.",
         "Ek tuition ki mulaqat se baaton ka silsila chal pada,\nGyarah ko tere janamdin par pehla paigaam bheja, dil ko raasta mil gaya.\nChaubees ko dil ka haal kaha, pachchees ko tera iqraar mila,\nEk anjaan se chehre mein phir jeene ka ek khwaab mila.",
@@ -309,8 +305,7 @@ window.POEM_COLLECTION = {
         "Tere ghar ki dehleez pe sukoon yun thahar jaaye,\nJaise thaki hui shaam ko aakhir apna ghar mil jaaye.\nTeri aankhon ki roshni pe koi mausam bhaari na ho,\nTeri hansi ko khilne ke liye koi wajah zaroori na ho.",
         "Main apni gardish tere aasmaan se hata raha hoon,\nNa paigaam ban ke lautunga, na kisi mod pe milunga.\nTu bekhauf apna kal chun, mere lautne ka darr na ho,\nMeri umeedon se teri rihaai hai, ab tujh par mera koi qarz baaqi na ho.",
         "Jis gyarah ko tere janamdin pe pehla paigaam bheja tha,\nChhe saal baad usi gyarah ko apni taraf se aakhri salaam bhej raha hoon.\nTu meri yaadon mein rahegi, magar mere intezaar mein nahi,\nTera janamdin har saal aaye, mera naam uske saath aaye ye zaroori toh nahi."
-      ],
-      "dedicatedPage": "aakhri-phool.html"
+      ]
     }
   ]
 };
