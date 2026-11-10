@@ -4105,11 +4105,12 @@ button { font: inherit; }
   }
 
   /*
-    A shaped float leaves the top of the narration fully open. It begins
-    excluding only the space occupied by the headstone and bouquet, allowing
-    paragraph lines to use the wider sky area above and wrap beside the grave.
-    The longer float keeps later lines clear of the stationary grave during
-    automatic scrolling.
+    The narration viewport stays directly below the title. Its shaped float
+    starts at the headstone's top edge, so opening lines use the full width and
+    later lines wrap only through the clear column beside the grave. The shape
+    continues to the ground-safe bottom of the viewport: narration never flows
+    below the headstone or onto the ground, and instead scrolls upward within
+    this bounded area. The sticky float stays aligned during that scrolling.
   */
   #scene-52 .scene52__grave-flow-shape {
     float: right;
