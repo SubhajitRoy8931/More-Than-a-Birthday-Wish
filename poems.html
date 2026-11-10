@@ -23,6 +23,7 @@
       <a href="#before-separation">Before the Separation <span>09</span></a>
       <a href="#after-separation">After the Separation <span>14</span></a>
     </nav>
+    <p class="poem-load-status" id="poemLoadStatus" role="status" aria-live="polite">Loading the poem collection…</p>
     <div id="poemCollections">
       <noscript>Enable JavaScript to open the poem collection.</noscript>
     </div>
@@ -31,7 +32,22 @@
       <a class="return-link footer-return" href="index.html">← Return to the story</a>
     </footer>
   </main>
-  <script src="poems-data.js?v=aakhri-phool-20261111a"></script>
-  <script src="poems.js?v=aakhri-phool-20261111a"></script>
+  <script>
+    // Capture script-resource failures before they can leave a blank poem page.
+    window.addEventListener('error', function (event) {
+      const target = event.target;
+      if (!target || target.tagName !== 'SCRIPT') return;
+      const status = document.getElementById('poemLoadStatus');
+      if (!status) return;
+      const resource = target.src || '';
+      status.textContent = resource.indexOf('poems-data.js') !== -1
+        ? 'The poem data file could not be loaded. Check the connection or site deployment, then reload.'
+        : 'The poem page script could not be loaded. Check the connection or site deployment, then reload.';
+      status.hidden = false;
+      status.setAttribute('role', 'alert');
+    }, true);
+  </script>
+  <script src="poems-data.js?v=aakhri-phool-20261111b"></script>
+  <script src="poems.js?v=aakhri-phool-20261111b"></script>
 </body>
 </html>
