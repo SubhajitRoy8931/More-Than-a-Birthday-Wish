@@ -280,9 +280,9 @@ window.POEM_COLLECTION = {
       ]
     },
     {
+      "id": "aakhri-phool",
       "title": "Aakhri Phool",
       "occasion": "My Last Birthday Wish · 11 November 2026",
-      "dedicatedPage": "aakhri-phool.html",
       "stanzas": [
         "Tere liye jo aag jalayi thi, aaj usi ki raakh se apna anjaam likh raha hoon,\nJis mohabbat ko umr bhar jeena tha, aaj usi ka aakhri paigaam likh raha hoon.",
         "Ek tuition ki mulaqat se baaton ka silsila chal pada,\nGyarah ko tere janamdin par pehla paigaam bheja, dil ko raasta mil gaya.\nChaubees ko dil ka haal kaha, pachchees ko tera iqraar mila,\nEk anjaan se chehre mein phir jeene ka ek khwaab mila.",
@@ -305,7 +305,8 @@ window.POEM_COLLECTION = {
         "Tere ghar ki dehleez pe sukoon yun thahar jaaye,\nJaise thaki hui shaam ko aakhir apna ghar mil jaaye.\nTeri aankhon ki roshni pe koi mausam bhaari na ho,\nTeri hansi ko khilne ke liye koi wajah zaroori na ho.",
         "Main apni gardish tere aasmaan se hata raha hoon,\nNa paigaam ban ke lautunga, na kisi mod pe milunga.\nTu bekhauf apna kal chun, mere lautne ka darr na ho,\nMeri umeedon se teri rihaai hai, ab tujh par mera koi qarz baaqi na ho.",
         "Jis gyarah ko tere janamdin pe pehla paigaam bheja tha,\nChhe saal baad usi gyarah ko apni taraf se aakhri salaam bhej raha hoon.\nTu meri yaadon mein rahegi, magar mere intezaar mein nahi,\nTera janamdin har saal aaye, mera naam uske saath aaye ye zaroori toh nahi."
-      ]
+      ],
+      "dedicatedPage": "aakhri-phool.html"
     }
   ]
 };
