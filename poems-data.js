@@ -279,7 +279,6 @@ window.POEM_COLLECTION = {
         "Aaj bhi jawaab nahi hai bas yaadon ka silsila hai,\nTu meri kahaani ka sach thi ya sirf mera bharam tha?"
       ]
     },
-    },
     {
       "id": "aakhri-phool",
       "title": "Aakhri Phool",
