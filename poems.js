@@ -43,12 +43,6 @@
 
   const collection = window.POEM_COLLECTION;
   const mount = document.getElementById('poemCollections');
-  if (!collection || !mount) return;
-
-  const sections = [
-    { key: 'before', id: 'before-separation', title: 'Before the Separation', count: '09', note: 'The words written while our story was still being lived.' },
-    { key: 'after', id: 'after-separation', title: 'After the Separation', count: '13', note: 'The words that came after, carrying memories and unanswered questions.' }
-  ];
 
   function make(tag, className, text) {
     const element = document.createElement(tag);
@@ -56,6 +50,28 @@
     if (text !== undefined) element.textContent = text;
     return element;
   }
+
+  function appendStanzas(container, stanzas) {
+    (stanzas || []).forEach(stanzaText => {
+      const stanza = make('section', 'stanza');
+      stanzaText.split('\n').forEach(line => stanza.appendChild(make('p', '', line)));
+      container.appendChild(stanza);
+    });
+  }
+
+  // Dedicated poem pages render from the same collection data as the accordion,
+  // so the full text can never drift between its two appearances.
+  const dedicatedPoemMount = document.querySelector('[data-poem-id]');
+  if (collection && dedicatedPoemMount) {
+    const dedicatedPoem = Object.values(collection).flat().find(poem => poem.id === dedicatedPoemMount.dataset.poemId);
+    if (dedicatedPoem) appendStanzas(dedicatedPoemMount, dedicatedPoem.stanzas);
+  }
+  if (!collection || !mount) return;
+
+  const sections = [
+    { key: 'before', id: 'before-separation', title: 'Before the Separation', count: '09', note: 'The words written while our story was still being lived.' },
+    { key: 'after', id: 'after-separation', title: 'After the Separation', count: '14', note: 'The words that came after, carrying memories and unanswered questions.' }
+  ];
 
   sections.forEach(sectionInfo => {
     const poems = collection[sectionInfo.key] || [];
@@ -83,11 +99,7 @@
       const body = make('article', 'poem-entry-body');
       body.setAttribute('aria-label', poem.title);
       const text = make('div', 'full-poem collection-full-poem');
-      (poem.stanzas || []).forEach(stanzaText => {
-        const stanza = make('section', 'stanza');
-        stanzaText.split('\n').forEach(line => stanza.appendChild(make('p', '', line)));
-        text.appendChild(stanza);
-      });
+      appendStanzas(text, poem.stanzas);
       body.appendChild(text);
       if (poem.dedicatedPage) {
         const dedicated = make('a', 'dedicated-poem-link', 'Open the dedicated poem page ↗');
