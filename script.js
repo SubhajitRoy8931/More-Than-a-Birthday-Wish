@@ -2201,10 +2201,10 @@
     scene52NarrationParagraphs, 'new-memory-glyph'
   );
 
-  // On narrow screens, the narration must flow around the stationary grave.
-  // A sticky float keeps that exclusion in the same viewport position as the
-  // artwork scrolls past, so scroll events no longer trigger repeated SVG
-  // measurements and forced text re-layouts.
+  // On mobile, narration begins at full width below the title, then wraps
+  // beside the stationary grave from the headstone's top down to the
+  // ground-safe viewport edge. The sticky float keeps that exclusion aligned
+  // during scrolling without per-frame SVG measurements or text reflow.
   let scene52GraveFlowFrame = null;
   let scene52FlowHasMeasured = false;
   let scene52ScrollTimer = null;
@@ -2219,51 +2219,64 @@
     if (!isMobilePortrait && !isMobileLandscape) {
       ['position', 'top', 'height', 'width', 'margin', 'shape-outside', 'shape-margin']
         .forEach(property => graveFlow.style.removeProperty(property));
+      scene52Viewport.style.removeProperty('top');
       scene52FlowHasMeasured = true;
       return;
     }
 
-    const viewportRect = scene52Viewport.getBoundingClientRect();
-    const textRect = narrationText.getBoundingClientRect();
     const stone = scene52Root.querySelector('.scene52__headstone-mobile-scale');
     const bouquet = scene52Root.querySelector('.scene52__bouquet');
-    if (!stone || !bouquet || textRect.width <= 0) return;
+    if (!stone || !bouquet) return;
 
-    // All measurements are taken once per viewport size. The grave artwork is
-    // fixed to the scene, so its screen-space bounds remain constant while the
-    // narration scrolls. The sticky float mirrors those bounds without a
-    // scroll listener or per-frame getBoundingClientRect() calls.
+    // Keep the narration viewport in its designed position directly below
+    // the title. The opening lines must use the full width until they reach
+    // the headstone; only then should text wrap into the clear column beside
+    // the grave. Never move the viewport itself down to the artwork.
     const stoneRect = stone.getBoundingClientRect();
     const bouquetRect = bouquet.getBoundingClientRect();
+    const viewportRect = scene52Viewport.getBoundingClientRect();
+    const textRect = narrationText.getBoundingClientRect();
+    if (textRect.width <= 0) return;
     const graveLeft = Math.min(stoneRect.left, bouquetRect.left);
     const graveRight = Math.max(stoneRect.right, bouquetRect.right);
-    const graveBottom = Math.max(stoneRect.bottom, bouquetRect.bottom);
     const scrollInset = Number.parseFloat(
       getComputedStyle(scene52Viewport).getPropertyValue('--scene52-scroll-inset')
     );
     const lowerEdge = viewportRect.bottom - (Number.isFinite(scrollInset) ? scrollInset : 8);
+    // Begin the exclusion exactly where the headstone starts, preserving
+    // full-width narration above it. Continue the exclusion to the ground-safe
+    // viewport edge (not merely to the bottom of the stone/bouquet): text must
+    // stay in the left column and scroll upward instead of flowing underneath
+    // the grave or onto the ground.
     const graveTopOffset = Math.max(0, stoneRect.top - viewportRect.top);
     const graveBottomOffset = Math.max(
       graveTopOffset + 1,
-      Math.min(graveBottom, lowerEdge) - viewportRect.top
+      lowerEdge - viewportRect.top
     );
     const exclusionLeft = Math.max(textRect.left, graveLeft - 6);
     const exclusionRight = Math.min(textRect.right, graveRight + 6);
-    const exclusionWidth = Math.max(0, exclusionRight - exclusionLeft);
-    const rightMargin = Math.max(0, textRect.right - exclusionRight);
-    const widthPercent = Math.min(100, (exclusionWidth / textRect.width) * 100);
+    const exclusionWidth = Math.max(1, exclusionRight - exclusionLeft);
+    // Let the float's box span from the grave to the right edge of the text
+    // column, but shape only the actual grave footprint. This lets lines use
+    // every clear gap on both sides instead of wasting the space beside it.
+    const floatWidth = Math.max(exclusionWidth, textRect.right - exclusionLeft);
+    const floatWidthPercent = Math.min(100, (floatWidth / textRect.width) * 100);
+    const shapeRightInsetPercent = Math.max(
+      0,
+      Math.min(100, ((textRect.right - exclusionRight) / floatWidth) * 100)
+    );
 
     // Apply the stationary float once. Later scroll frames only move the
     // scroll container; the sticky shape itself stays aligned with the grave.
     graveFlow.style.position = 'sticky';
     graveFlow.style.top = `${graveTopOffset}px`;
-    graveFlow.style.width = `${widthPercent}%`;
+    graveFlow.style.width = `${floatWidthPercent}%`;
     graveFlow.style.height = `${Math.max(1, graveBottomOffset - graveTopOffset)}px`;
-    graveFlow.style.margin = `${graveTopOffset}px ${rightMargin}px 0 0`;
+    graveFlow.style.margin = `${graveTopOffset}px 0 0 0`;
     graveFlow.style.shapeMargin = isMobileLandscape ? '6px' : '7px';
     graveFlow.style.shapeOutside = isMobileLandscape
-      ? 'inset(0px 0px 0px 0px round 22px 22px 0 0)'
-      : 'inset(0px 0px 0px 0px round 24px 24px 0 0)';
+      ? `inset(0px ${shapeRightInsetPercent}% 0px 0px round 22px 22px 0 0)`
+      : `inset(0px ${shapeRightInsetPercent}% 0px 0px round 24px 24px 0 0)`;
     scene52FlowHasMeasured = true;
   }
 
