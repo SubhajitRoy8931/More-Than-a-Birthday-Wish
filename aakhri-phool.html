@@ -19,6 +19,7 @@
       <div class="title-rule" aria-hidden="true"></div>
     </header>
 
+    <p class="poem-load-status" id="poemLoadStatus" role="status" aria-live="polite">Loading Aakhri Phool…</p>
     <article class="full-poem" data-poem-id="aakhri-phool" aria-label="Complete poem Aakhri Phool"></article>
 
     <footer class="poem-footer">
@@ -26,7 +27,22 @@
       <a class="return-link footer-return" href="index.html">← Return to the story</a>
     </footer>
   </main>
-  <script src="poems-data.js?v=aakhri-phool-20261111a"></script>
-  <script src="poems.js?v=aakhri-phool-20261111a"></script>
+  <script>
+    // Capture script-resource failures before they can leave a blank poem page.
+    window.addEventListener('error', function (event) {
+      const target = event.target;
+      if (!target || target.tagName !== 'SCRIPT') return;
+      const status = document.getElementById('poemLoadStatus');
+      if (!status) return;
+      const resource = target.src || '';
+      status.textContent = resource.indexOf('poems-data.js') !== -1
+        ? 'The poem data file could not be loaded. Check the connection or site deployment, then reload.'
+        : 'The poem page script could not be loaded. Check the connection or site deployment, then reload.';
+      status.hidden = false;
+      status.setAttribute('role', 'alert');
+    }, true);
+  </script>
+  <script src="poems-data.js?v=aakhri-phool-20261111b"></script>
+  <script src="poems.js?v=aakhri-phool-20261111b"></script>
 </body>
 </html>
