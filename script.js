@@ -2347,21 +2347,37 @@
   // appears exactly two seconds after the final narration character is typed.
   const scene53Root = document.getElementById('scene-53');
   const scene53Stage = document.getElementById('scene53Stage');
-  const scene53NarrationParagraphs = [...scene53Root.querySelectorAll('#scene53Narration p')];
+  const scene53NarrationParagraphs = [...scene53Root.querySelectorAll('#scene53Narration p:not(.scene53-birthday)')];
+  const scene53PoemLink = document.getElementById('scene53PoemLink');
+  const scene53Birthday = scene53Root.querySelector('.scene53-birthday');
   const scene53ClosingDate = document.getElementById('scene53ClosingDate');
   const SCENE53_NARRATION_START_MS = 1100;
+  const SCENE53_POEM_LINK_PAUSE_MS = 850;
+  const SCENE53_BIRTHDAY_AFTER_LINK_MS = 2100;
   const SCENE53_FINAL_DATE_PAUSE_MS = 2000;
   const SCENE53_FINAL_DATE_FADE_MS = 1200;
   const scene53Typewriter = prepareChapterTextTypewriter(
     scene53NarrationParagraphs, 'scene53-glyph'
   );
-  const scene53LastCharacterAtMs = Math.max(
+  const scene53NarrationLastCharacterAtMs = Math.max(
     0,
     scene53Typewriter.typingDuration - CHAPTER_TEXT_TYPE_INTERVAL_MS
   );
-  const scene53ClosingDateAtMs =
+  const scene53PoemLinkAtMs =
     SCENE53_NARRATION_START_MS
-      + scene53LastCharacterAtMs
+      + scene53NarrationLastCharacterAtMs
+      + SCENE53_POEM_LINK_PAUSE_MS;
+  const scene53BirthdayAtMs = scene53PoemLinkAtMs + SCENE53_BIRTHDAY_AFTER_LINK_MS;
+  const scene53BirthdayTypewriter = prepareChapterTextTypewriter(
+    [scene53Birthday], 'scene53-glyph'
+  );
+  const scene53BirthdayLastCharacterAtMs = Math.max(
+    0,
+    scene53BirthdayTypewriter.typingDuration - CHAPTER_TEXT_TYPE_INTERVAL_MS
+  );
+  const scene53ClosingDateAtMs =
+    scene53BirthdayAtMs
+      + scene53BirthdayLastCharacterAtMs
       + SCENE53_FINAL_DATE_PAUSE_MS;
   const scene53DateMain = scene53Root.querySelector('.scene53-date-main');
   const scene53DateSubtitle = scene53Root.querySelector('.scene53-date-subtitle');
@@ -2372,6 +2388,8 @@
       textRevealEvent(0, scene53DateMain ? scene53DateMain.textContent : ''),
       textRevealEvent(0, scene53DateSubtitle ? scene53DateSubtitle.textContent : ''),
       ...typewriterReadingEvents(scene53NarrationParagraphs, scene53Typewriter, SCENE53_NARRATION_START_MS),
+      textRevealEvent(scene53PoemLinkAtMs, scene53PoemLink.textContent),
+      ...typewriterReadingEvents([scene53Birthday], scene53BirthdayTypewriter, scene53BirthdayAtMs),
       textRevealEvent(scene53ClosingDateAtMs, scene53ClosingDate.textContent)
     ]
   );
@@ -2405,6 +2423,20 @@
   function updateScene53(localTime) {
     scene53Typewriter.events.forEach(event => {
       const visible = localTime >= SCENE53_NARRATION_START_MS + event.at;
+      const wasVisible = event.element.classList.contains('is-visible');
+      event.element.classList.toggle('is-visible', visible);
+      if (visible && !wasVisible) scheduleScene53Scroll(event.element);
+    });
+
+    const poemLinkVisible = localTime >= scene53PoemLinkAtMs;
+    const poemLinkWasVisible = scene53PoemLink.classList.contains('is-visible');
+    scene53PoemLink.classList.toggle('is-visible', poemLinkVisible);
+    scene53PoemLink.setAttribute('aria-hidden', String(!poemLinkVisible));
+    scene53PoemLink.tabIndex = poemLinkVisible ? 0 : -1;
+    if (poemLinkVisible && !poemLinkWasVisible) scheduleScene53Scroll(scene53PoemLink);
+
+    scene53BirthdayTypewriter.events.forEach(event => {
+      const visible = localTime >= scene53BirthdayAtMs + event.at;
       const wasVisible = event.element.classList.contains('is-visible');
       event.element.classList.toggle('is-visible', visible);
       if (visible && !wasVisible) scheduleScene53Scroll(event.element);
@@ -3920,6 +3952,16 @@
     event.preventDefault();
     event.stopPropagation();
     const poemUrl = withStoryReturnState(fullPoemLink.href);
+    const poemTab = window.open(poemUrl, '_blank');
+    if (!poemTab) window.location.assign(poemUrl);
+  });
+
+  // The final-scene poem uses the same timestamped, opener-aware navigation
+  // as the existing confession poem, preserving this exact moment in the story.
+  scene53PoemLink.addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
+    const poemUrl = withStoryReturnState(scene53PoemLink.href);
     const poemTab = window.open(poemUrl, '_blank');
     if (!poemTab) window.location.assign(poemUrl);
   });
