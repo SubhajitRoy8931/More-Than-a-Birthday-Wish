@@ -2901,6 +2901,33 @@ button { font: inherit; }
   font-weight: 700;
   letter-spacing: .005em;
 }
+.scene53-poem-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 1.5em;
+  margin: 0 auto;
+  color: #c9afd2;
+  font: italic 400 clamp(12px, 1.02vw, 14px)/1.5 "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  letter-spacing: .025em;
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 175, 210, .58);
+  text-underline-offset: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.72,.22,1), color 180ms ease, visibility 0s linear 650ms;
+}
+.scene53-poem-link:hover { color: #f1e9f2; }
+.scene53-poem-link.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.72,.22,1), color 180ms ease;
+}
 .scene53-closing-date {
   opacity: 0;
   transform: translateY(8px);
@@ -2933,6 +2960,7 @@ button { font: inherit; }
   .scene53-date-main { font-size: 22px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .scene53-poem-link { transition: none !important; transform: none !important; }
   .scene53-closing-date { transition: none !important; transform: none !important; }
   .scene53-closing-date.is-visible { opacity: 1; }
 }
