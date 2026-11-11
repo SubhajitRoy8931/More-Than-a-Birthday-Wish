@@ -1420,32 +1420,31 @@
   );
 
   function updateHopeJourneyScene(localTime) {
-    // The journey content was initially display:none in CSS. Reveal its
-    // parent when Scene 27 becomes active; otherwise the map and typewriter
-    // glyphs update invisibly inside a permanently hidden container.
+    // Keep the map's final layout footprint from the first frame. Its entrance
+    // and settle are visual transforms, so the narration below never reflows.
     hopeJourneyBlock.style.display = 'flex';
     hopeJourneyBlock.style.visibility = 'visible';
+    const initialWidth = hopeInitialMapWidth();
+    const finalWidth = hopeFinalMapWidth();
+    const initialScale = initialWidth / finalWidth;
+    hopeMapFrame.style.width = `${finalWidth}%`;
+
     const mapElapsed = localTime - HOPE_MAP_AT;
     if (mapElapsed < 0) {
       hopeMapFrame.style.opacity = '0';
       hopeMapFrame.style.filter = 'blur(3px)';
-      hopeMapFrame.style.transform = 'translate3d(0, 28px, 0) scale(.76)';
-      hopeMapFrame.style.width = `${hopeInitialMapWidth()}%`;
+      hopeMapFrame.style.transform = `translate3d(0, 28px, 0) scale(${(initialScale * .76).toFixed(4)})`;
     } else {
       const popP = clamp01(mapElapsed / HOPE_MAP_POP_MS);
       const popEase = easeOutBack(popP);
       const fade = easeOutCubic(mapElapsed / 500);
-      let scale = .76 + (.34 * popEase);
+      let scale = initialScale * (.76 + (.34 * popEase));
       let y = 28 * (1 - easeOutCubic(popP));
-      const initialWidth = hopeInitialMapWidth();
-      let width = initialWidth;
       if (localTime >= HOPE_MAP_SHRINK_AT) {
         const shrinkP = smoothProgress((localTime - HOPE_MAP_SHRINK_AT) / HOPE_MAP_SHRINK_MS);
-        width = initialWidth + ((hopeFinalMapWidth() - initialWidth) * shrinkP);
-        scale = 1.10 + (1 - 1.10) * shrinkP;
+        scale = (initialScale * 1.10) + ((1 - (initialScale * 1.10)) * shrinkP);
         y = 1.5 * shrinkP;
       }
-      hopeMapFrame.style.width = `${width.toFixed(2)}%`;
       hopeMapFrame.style.opacity = fade.toFixed(3);
       hopeMapFrame.style.filter = `blur(${(3 * (1 - fade)).toFixed(2)}px)`;
       hopeMapFrame.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0) scale(${scale.toFixed(4)})`;
@@ -2003,11 +2002,11 @@
     const itemRect = element.getBoundingClientRect();
     const itemBottom = itemRect.bottom - stageRect.top + thingsStage.scrollTop;
     const visibleBottom = thingsStage.scrollTop + thingsStage.clientHeight;
-    // Do not move the page until the next timeline item actually passes
-    // the visible bottom edge. Native touch scrolling remains available.
-    if (itemBottom > visibleBottom - 22) {
+    // Keep the timeline stationary until the next revealed item reaches
+    // the lower reading gutter. Native touch scrolling remains available.
+    if (itemBottom > visibleBottom - 8) {
       thingsStage.scrollTo({
-        top: Math.max(0, itemBottom - thingsStage.clientHeight + 34),
+        top: Math.max(0, itemBottom - thingsStage.clientHeight + 8),
         behavior: prefersReducedMotion ? 'auto' : 'smooth'
       });
     }
@@ -2074,7 +2073,7 @@
     // underneath or become obscured by the fixed scene heading.
     const scrollRect = scrollArea.getBoundingClientRect();
     const itemRect = element.getBoundingClientRect();
-    const lowerEdge = scrollRect.bottom - 12;
+    const lowerEdge = scrollRect.bottom - 8;
     const overflow = itemRect.bottom - lowerEdge;
     if (overflow > 1) {
       const maximumScroll = Math.max(0, scrollArea.scrollHeight - scrollArea.clientHeight);
@@ -2409,7 +2408,7 @@
 
       const stageRect = scene53Stage.getBoundingClientRect();
       const targetRect = target.getBoundingClientRect();
-      const lowerEdge = stageRect.bottom - 24;
+      const lowerEdge = stageRect.bottom - 8;
       const overflow = targetRect.bottom - lowerEdge;
       if (overflow > 0) {
         scene53Stage.scrollTo({
@@ -3020,7 +3019,9 @@
         if (host !== narrationAutoScrollHost || !pendingTarget.isConnected) return;
         const hostRect = host.getBoundingClientRect();
         const targetRect = pendingTarget.getBoundingClientRect();
-        const lowerEdge = hostRect.bottom - 24;
+        // Keep a small reading gutter, but do not start following a line
+        // while meaningful unused viewport space remains.
+        const lowerEdge = hostRect.bottom - 8;
         const overflow = targetRect.bottom - lowerEdge;
         if (overflow <= 1) return;
 
@@ -3509,7 +3510,12 @@
       });
     }
     if (index === 47) {
-      updateNewMemoryTypewriter(examResultsIntroTypewriter, localTime, AFTER_BREAKUP_TEXT_START_MS);
+      examResultsIntroTypewriter.events.forEach(event => {
+        const visible = localTime >= AFTER_BREAKUP_TEXT_START_MS + event.at;
+        const wasVisible = event.element.classList.contains('is-visible');
+        event.element.classList.toggle('is-visible', visible);
+        if (visible && !wasVisible) keepLatestExamResultVisible(event.element);
+      });
       examResultsSchedule.forEach(item => {
         const visible = localTime >= AFTER_BREAKUP_TEXT_START_MS
           + examResultsIntroTypewriter.typingDuration
