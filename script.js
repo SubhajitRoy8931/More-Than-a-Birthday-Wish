@@ -3510,7 +3510,12 @@
       });
     }
     if (index === 47) {
-      updateNewMemoryTypewriter(examResultsIntroTypewriter, localTime, AFTER_BREAKUP_TEXT_START_MS);
+      examResultsIntroTypewriter.events.forEach(event => {
+        const visible = localTime >= AFTER_BREAKUP_TEXT_START_MS + event.at;
+        const wasVisible = event.element.classList.contains('is-visible');
+        event.element.classList.toggle('is-visible', visible);
+        if (visible && !wasVisible) keepLatestExamResultVisible(event.element);
+      });
       examResultsSchedule.forEach(item => {
         const visible = localTime >= AFTER_BREAKUP_TEXT_START_MS
           + examResultsIntroTypewriter.typingDuration
