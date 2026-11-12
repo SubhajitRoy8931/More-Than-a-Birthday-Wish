@@ -4064,7 +4064,6 @@
     const scene = scenes[sceneIndex];
     if (!scene) return;
     const savedAnimations = Array.isArray(savedState.animations) ? savedState.animations : [];
-    const restoredTargets = new WeakSet();
     const restoredAnimations = new WeakSet();
     const settledAnimations = new WeakSet();
     const animationBuckets = new Map();
@@ -4105,7 +4104,6 @@
         animation.playbackRate = Number.isFinite(savedAnimation.playbackRate) ? savedAnimation.playbackRate : 1;
         if (savedAnimation.playState === 'running' || savedAnimation.playState === 'pending') animation.play();
         else animation.pause();
-        restoredTargets.add(target);
         restoredAnimations.add(animation);
       } catch (error) {
         console.info('An individual scene animation could not be restored.', error);
