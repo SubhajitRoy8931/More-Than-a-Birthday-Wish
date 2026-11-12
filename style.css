@@ -4516,3 +4516,18 @@ button { font: inherit; }
 .scene53-stage {
   justify-content: safe center;
 }
+
+
+/* Scene 24 — let the map's overshooting entrance escape its narration
+   viewport and place the enlarged map above the chapter heading. This class
+   exists only during the map reveal/route hold; the narration scroll viewport
+   resumes its normal overflow behaviour before text begins. */
+.scene-hope-journey .hope-journey-block.hope-map-popup-open {
+  position: relative;
+  z-index: 4;
+  overflow: visible !important;
+}
+.scene-hope-journey .hope-journey-block.hope-map-popup-open .hope-map-frame {
+  position: relative;
+  z-index: 4;
+}
