@@ -4064,7 +4064,8 @@
     const scene = scenes[sceneIndex];
     if (!scene) return;
     const savedAnimations = Array.isArray(savedState.animations) ? savedState.animations : [];
-    const restoredTargets = new WeakSet();
+    const restoredAnimations = new WeakSet();
+    const settledAnimations = new WeakSet();
     const animationBuckets = new Map();
     const animationKey = (reference, name, pseudo) => {
       const locator = reference.id ? `id:${reference.id}` : `path:${reference.path.join('.')}`;
@@ -4103,29 +4104,86 @@
         animation.playbackRate = Number.isFinite(savedAnimation.playbackRate) ? savedAnimation.playbackRate : 1;
         if (savedAnimation.playState === 'running' || savedAnimation.playState === 'pending') animation.play();
         else animation.pause();
-        restoredTargets.add(target);
+        restoredAnimations.add(animation);
       } catch (error) {
         console.info('An individual scene animation could not be restored.', error);
       }
     });
 
-    // Elements whose entrance had already settled are fixed in their current
-    // timeline-derived state, so they do not replay. Truly in-progress effects
-    // above retain their recorded Web Animations API currentTime.
+    // A completed CSS animation is not included in the outgoing snapshot,
+    // because captureActiveSceneAnimations records only running/paused effects.
+    // However, render() recreates its CSS animation from time zero when the
+    // scene is rebuilt. Freeze those recreated effects at their actual end time
+    // before disabling transitions; removing the animation outright would also
+    // remove its forwards-filled opacity/transform and make narration vanish.
+    function settleUnrestoredAnimations(element) {
+      let canMarkSettled = true;
+      let hasRestoredAnimation = false;
+      if (!element || typeof element.getAnimations !== 'function') {
+        return { canMarkSettled, hasRestoredAnimation };
+      }
+
+      let animations = [];
+      try {
+        animations = element.getAnimations();
+      } catch (error) {
+        return { canMarkSettled: false, hasRestoredAnimation };
+      }
+
+      animations.forEach(animation => {
+        if (restoredAnimations.has(animation)) {
+          hasRestoredAnimation = true;
+          return;
+        }
+        if (settledAnimations.has(animation)) return;
+
+        try {
+          const effect = animation.effect;
+          const timing = effect && typeof effect.getComputedTiming === 'function'
+            ? effect.getComputedTiming()
+            : null;
+          const endTime = timing && timing.endTime;
+          // Infinite animations must not be frozen at an arbitrary point. They
+          // remain live unless their exact progress was restored from the snapshot.
+          if (!Number.isFinite(endTime)) {
+            canMarkSettled = false;
+            return;
+          }
+          animation.pause();
+          animation.currentTime = Math.max(0, endTime);
+          settledAnimations.add(animation);
+        } catch (error) {
+          canMarkSettled = false;
+          console.info('A completed scene animation could not be settled.', error);
+        }
+      });
+
+      // Do not put restore-settled on an element with a saved animation that is
+      // meant to continue. Other animations on that same element have still
+      // been frozen individually at their final frame above.
+      return { canMarkSettled: canMarkSettled && !hasRestoredAnimation, hasRestoredAnimation };
+    }
+
+    // Reveal classes such as new-memory-glyph.is-visible and
+    // confession-poem-lines p.is-revealed depend on animation fill for their
+    // final visible style. Keep that fill by pausing the effect at its end.
     const revealSelector = '.revealed, .is-visible, .is-revealed, .visible';
     scene.querySelectorAll(revealSelector).forEach(element => {
-      if (!restoredTargets.has(element)) element.classList.add('restore-settled');
+      const result = settleUnrestoredAnimations(element);
+      if (result.canMarkSettled) element.classList.add('restore-settled');
     });
+
     const allSceneElements = [scene, ...scene.querySelectorAll('*')];
     allSceneElements.forEach(element => {
-      if (restoredTargets.has(element)) return;
       const computed = getComputedStyle(element);
       if (computed.animationName && computed.animationName.split(',').some(name => name.trim() !== 'none')) {
-        element.classList.add('restore-settled');
+        const result = settleUnrestoredAnimations(element);
+        if (result.canMarkSettled) element.classList.add('restore-settled');
       }
     });
-    if (sceneTitle && !sceneTitle.hidden && !restoredTargets.has(sceneTitle)) {
-      sceneTitle.classList.add('restore-settled');
+    if (sceneTitle && !sceneTitle.hidden) {
+      const result = settleUnrestoredAnimations(sceneTitle);
+      if (result.canMarkSettled) sceneTitle.classList.add('restore-settled');
     }
   }
 

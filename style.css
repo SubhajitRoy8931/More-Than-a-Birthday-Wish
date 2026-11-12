@@ -4390,7 +4390,10 @@ button { font: inherit; }
 .experience .scene .restore-settled::before,
 .experience .scene .restore-settled::after,
 .experience .scene-title-overlay.restore-settled {
-  animation: none !important;
+  /* Keep the animation effect applied at its frozen WAAPI currentTime.
+     animation:none would discard forwards-filled opacity/transform and hide
+     typewritten narration that relies on the animation's final keyframe. */
+  animation-play-state: paused !important;
   transition: none !important;
 }
 
