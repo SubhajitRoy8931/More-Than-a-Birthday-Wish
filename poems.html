@@ -31,35 +31,5 @@
 </footer>
 </main>
 
-<script>(() => {
-  const returnState = new URLSearchParams(window.location.search).get('storyReturn');
-  if (returnState) {
-    document.querySelectorAll('.return-link, .dedicated-poem-link').forEach(link => {
-      const target = new URL(link.href, window.location.href);
-      target.searchParams.set('storyReturn', returnState);
-      link.href = target.href;
-    });
-  }
-  document.querySelectorAll('.poem-entry').forEach(details => {
-    const label = details.querySelector('.poem-entry-affordance');
-    if (!label) return;
-    details.addEventListener('toggle', () => { label.textContent = details.open ? 'Close poem' : 'Read poem'; });
-  });
-  document.querySelectorAll('.return-link').forEach(link => {
-    link.addEventListener('click', event => {
-      if (!window.opener || window.opener.closed || !returnState) return;
-      try {
-        if (window.opener.location.origin !== window.location.origin) return;
-        // The original story tab owns the snapshot; request restoration by
-        // message instead of parsing or forwarding it through the URL.
-        window.opener.focus();
-        window.opener.postMessage({ type: 'birthday-story:return-to-opener' }, window.location.origin);
-        event.preventDefault();
-        window.close();
-      } catch (error) {
-        console.info('The original story tab is unavailable; using the return link.', error);
-      }
-    });
-  });
-})();</script></body>
+</body>
 </html>
