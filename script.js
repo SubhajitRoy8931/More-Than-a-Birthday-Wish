@@ -1424,6 +1424,9 @@
     // and settle are visual transforms, so the narration below never reflows.
     hopeJourneyBlock.style.display = 'flex';
     hopeJourneyBlock.style.visibility = 'visible';
+    const mapPopupOpen = localTime >= HOPE_MAP_AT
+      && localTime < HOPE_MAP_SHRINK_AT + HOPE_MAP_SHRINK_MS;
+    hopeJourneyBlock.classList.toggle('hope-map-popup-open', mapPopupOpen);
     const initialWidth = hopeInitialMapWidth();
     const finalWidth = hopeFinalMapWidth();
     const initialScale = initialWidth / finalWidth;
@@ -3105,6 +3108,9 @@
 
   function setScene(index) {
     if (index === activeScene) return;
+    if (activeScene === 24 && index !== 24 && hopeJourneyBlock) {
+      hopeJourneyBlock.classList.remove('hope-map-popup-open');
+    }
     if (activeScene >= 0 && scenes[activeScene]) {
       scenes[activeScene].classList.remove('restore-settled');
       scenes[activeScene].querySelectorAll('.restore-settled').forEach(element => element.classList.remove('restore-settled'));
@@ -3934,15 +3940,21 @@
 
   function withStoryReturnState(destination) {
     const state = createStoryReturnState();
+    const serializedState = JSON.stringify(state);
     lastNavigationReturnState = state;
+    let sessionSnapshotSaved = false;
     try {
-      sessionStorage.setItem(STORY_RETURN_STATE_KEY, JSON.stringify(state));
+      sessionStorage.setItem(STORY_RETURN_STATE_KEY, serializedState);
       sessionStorage.removeItem(LEGACY_STORY_RETURN_STATE_KEY);
+      sessionSnapshotSaved = true;
     } catch (error) {
-      console.warn('Could not save the story return snapshot in this tab.', error);
+      // A same-tab navigation cannot rely on in-memory state after a full
+      // document load. Keep a URL payload as a last-resort fallback only when
+      // this tab's session storage is unavailable.
+      console.warn('Could not save the story return snapshot in this tab; using the URL fallback.', error);
     }
     const target = new URL(destination, window.location.href);
-    target.searchParams.set('storyReturn', 'session-v2');
+    target.searchParams.set('storyReturn', sessionSnapshotSaved ? 'session-v2' : serializedState);
     return target.href;
   }
 
